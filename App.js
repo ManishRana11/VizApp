@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 import React, { useMemo, useReducer, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
+import axios from 'axios';
+
 import { MainStackNavigator } from './src/navigation/StackNavigation';
 import { authReducer } from './src/reducers/AuthReducer';
 import { AuthContext } from './src/context/auth.js';
@@ -17,32 +19,37 @@ const App = () => {
     () => ({
       signIn: async (loginData) => {
         // get token from server
-        fetch(`${CLIENT_USER_URL}/auth/login`, {
-          method: 'POST',
+        console.log(loginData);
+        console.log(`${CLIENT_USER_URL}/auth/login`);
+        axios({
+          method: 'post',
+          url: `${CLIENT_USER_URL}/auth/login`,
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
+          data: JSON.stringify({
             email: loginData.email.toLowerCase().trim(),
             password: loginData.password,
           }),
         })
-          .then((response) => response.json())
-          .then(async (data) => {
-            if (data.token) {
-              await AsyncStorage.setItem('userToken', data.token);
-              dispathAuthState({ type: 'SIGN_IN', token: data.token });
+          .then(async (response) => {
+            if (response.data.token) {
+              await AsyncStorage.setItem('userToken', response.data.token);
+              dispathAuthState({ type: 'SIGN_IN', token: response.data.token });
             }
-            if (data.status === 'error') {
-              console.log(data);
+            if (response.statusText === 'error') {
+              console.log(response);
             }
           })
           .catch((err) => {
             console.log(err);
           });
       },
-      signOut: () => dispathAuthState({ type: 'SIGN_OUT' }),
+      signOut: async () => {
+        dispathAuthState({ type: 'SIGN_OUT' });
+        await AsyncStorage.removeItem('userToken');
+      },
     }),
     [],
   );

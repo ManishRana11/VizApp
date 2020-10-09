@@ -17,7 +17,7 @@ const MainBottomNavigator = () => {
             iconName = 'home';
           } else if (route.name === 'Account') {
             iconName = 'account-circle';
-          } else if (route.name === 'Notification') {
+          } else if (route.name === 'Notifications') {
             iconName = 'bell';
           }
           return (
@@ -27,7 +27,7 @@ const MainBottomNavigator = () => {
       })}>
       <Tab.Screen name="Dashboards" component={Dashboards} />
       <Tab.Screen name="Account" component={Account} />
-      <Tab.Screen name="Notification" component={Notification} />
+      <Tab.Screen name="Notifications" component={Notification} />
     </Tab.Navigator>
   );
 };
