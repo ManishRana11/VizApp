@@ -1,16 +1,38 @@
 import React, { useContext } from 'react';
-import { View, Text, Button } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { AuthContext } from '../context/auth';
+import DefaultScrollView from '../components/default/DefaultScrollView';
+import { theme } from '../theme';
 
 const Account = () => {
   const { signOut } = useContext(AuthContext);
 
   return (
-    <View>
+    <DefaultScrollView
+      styleView={styles.container}
+      styleScroll={styles.scrollContainer}>
       <Text>Account</Text>
-      <Button title="Sign Out" onPress={signOut} />
-    </View>
+      <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
+        <Text>Sign Out</Text>
+      </TouchableOpacity>
+    </DefaultScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  signOutButton: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: theme.spacing.small,
+  },
+});
 
 export default Account;

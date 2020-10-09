@@ -1,12 +1,25 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+import DefaultScrollView from '../components/default/DefaultScrollView';
 
 const Notification = () => {
   return (
-    <View>
+    <DefaultScrollView
+      styleView={styles.container}
+      styleScroll={styles.scrollContainer}>
       <Text>Notification</Text>
-    </View>
+    </DefaultScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default Notification;

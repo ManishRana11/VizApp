@@ -1,29 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { View, Image, StyleSheet, ScrollView, Button } from 'react-native';
+import {
+  View,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 
 import { theme } from '../theme';
 import { AuthContext } from '../context/auth.js';
 import LoginInput from '../components/LoginInput';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-  },
-  image: {
-    width: 300,
-    height: 300,
-    resizeMode: 'contain',
-  },
-  scrollContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: theme.spacing.small,
-  },
-  button: {
-    alignSelf: 'stretch',
-  },
-});
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -53,14 +40,39 @@ const Login = () => {
           value={password}
           onChangeText={setPassword}
         />
-        <Button
+        <TouchableOpacity
           title="Login"
           style={styles.button}
-          onPress={() => signIn({ email, password })}
-        />
+          onPress={() => signIn({ email, password })}>
+          <Text>LOGIN</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  image: {
+    width: 300,
+    height: 300,
+    resizeMode: 'contain',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing.small,
+  },
+  button: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: theme.spacing.small,
+    margin: theme.spacing.small,
+  },
+});
 
 export default Login;
