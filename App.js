@@ -14,13 +14,12 @@ const App = () => {
     isLoading: true,
     isSignout: false,
     userToken: null,
+    user: null,
   });
   const authContext = useMemo(
     () => ({
       signIn: async (loginData) => {
         // get token from server
-        console.log(loginData);
-        console.log(`${CLIENT_USER_URL}/auth/login`);
         axios({
           method: 'post',
           url: `${CLIENT_USER_URL}/auth/login`,
@@ -36,7 +35,15 @@ const App = () => {
           .then(async (response) => {
             if (response.data.token) {
               await AsyncStorage.setItem('userToken', response.data.token);
-              dispathAuthState({ type: 'SIGN_IN', token: response.data.token });
+              await AsyncStorage.setItem(
+                'userObject',
+                JSON.stringify(response.data.user),
+              );
+              dispathAuthState({
+                type: 'SIGN_IN',
+                token: response.data.token,
+                user: response.data.user,
+              });
             }
             if (response.statusText === 'error') {
               console.log(response);
@@ -47,8 +54,9 @@ const App = () => {
           });
       },
       signOut: async () => {
-        dispathAuthState({ type: 'SIGN_OUT' });
         await AsyncStorage.removeItem('userToken');
+        await AsyncStorage.removeItem('userObject');
+        dispathAuthState({ type: 'SIGN_OUT' });
       },
     }),
     [],
@@ -56,16 +64,21 @@ const App = () => {
 
   useEffect(() => {
     const bootstrapAsync = async () => {
-      let userToken;
+      let userToken, userObject;
 
       try {
         userToken = await AsyncStorage.getItem('userToken');
+        userObject = await AsyncStorage.getItem('userObject');
       } catch (e) {
         // Restoring Token Failed
         console.log(e);
       }
 
-      dispathAuthState({ type: 'RESTORE_TOKEN', token: userToken });
+      dispathAuthState({
+        type: 'RESTORE_TOKEN',
+        token: userToken,
+        user: JSON.parse(userObject),
+      });
     };
     bootstrapAsync();
   }, []);
