@@ -7,7 +7,7 @@ const Notification = () => {
     <DefaultScrollView
       styleView={styles.container}
       styleScroll={styles.scrollContainer}>
-      <Text>Notification</Text>
+      <Text>No Notifications</Text>
     </DefaultScrollView>
   );
 };
