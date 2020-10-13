@@ -3,8 +3,9 @@ import CognitensorAsyncStorageService from '../asyncstorage/CognitensorAsyncStor
 import { CLIENT_USER_URL } from '../../constants';
 
 class CognitensorEndpoints {
-  api = async ({ url, method, dispathReducer }) => {
-    const token = CognitensorAsyncStorageService.getUserToken();
+  api = async ({ url, method, dispatchReducer }) => {
+    dispatchReducer({ type: 'API_FETCH_INIT' });
+    const token = await CognitensorAsyncStorageService.getUserToken();
     const reqConfig = {
       method,
       url,
@@ -16,15 +17,21 @@ class CognitensorEndpoints {
 
     // TODO: Check if device is online
     axios(reqConfig)
-      .then((data) => {
-        if (data.data.status === 'success') {
-          dispathReducer();
+      .then((result) => {
+        if (result.status === 200) {
+          dispatchReducer({
+            type: 'API_FETCH_SUCCESS',
+            payload: result.data,
+          });
         }
       })
-      .catch((e) => console.warn(e));
+      .catch((e) => {
+        dispatchReducer({ type: 'API_FETCH_FAILURE' });
+        console.warn(e);
+      });
   };
 
-  login = async (email, password, dispathReducer) => {
+  login = async (email, password, dispatchReducer) => {
     axios({
       method: 'post',
       url: `${CLIENT_USER_URL}/auth/login`,
@@ -42,7 +49,7 @@ class CognitensorEndpoints {
           await CognitensorAsyncStorageService.setUserToken(
             response.data.token,
           );
-          dispathReducer({
+          dispatchReducer({
             type: 'SIGN_IN',
             token: response.data.token,
             user: response.data.user,
@@ -57,24 +64,24 @@ class CognitensorEndpoints {
       });
   };
 
-  signOut = async (dispathReducer) => {
+  signOut = async (dispatchReducer) => {
     await CognitensorAsyncStorageService.removeUserToken();
-    dispathReducer({ type: 'SIGN_OUT' });
+    dispatchReducer({ type: 'SIGN_OUT' });
   };
 
-  getUserDetails = async (dispathReducer) => {
-    this.api({
+  getUserDetails = async ({ dispatchReducer }) => {
+    await this.api({
       url: `${CLIENT_USER_URL}/auth/user/data`,
       method: 'get',
-      dispathReducer,
+      dispatchReducer,
     });
   };
 
-  getDashboardList = async (dispathReducer) => {
-    this.api({
+  getDashboardList = async ({ dispatchReducer }) => {
+    await this.api({
       url: `${CLIENT_USER_URL}/cogniviz/dashboard/titles`,
       method: 'get',
-      dispathReducer,
+      dispatchReducer,
     });
   };
 }
