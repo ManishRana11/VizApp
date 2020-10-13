@@ -1,8 +1,11 @@
 import React, { useEffect, useReducer } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { apiStateReducer } from '../reducers/ApiStateReducer';
 import CognitensorEndpoints from '../services/network/CognitensorEndpoints';
-import DefaultScrollView from '../components/default/DefaultScrollView';
+import DefaultView from '../components/default/DefaultView';
+import DashboardHeader from '../components/DashboardHeader';
+import DashboardListCard from '../components/DashboardListCard';
+import { theme } from '../theme';
 
 const Dashboards = () => {
   const [dashboards, dispatchDashboards] = useReducer(apiStateReducer, {
@@ -18,21 +21,19 @@ const Dashboards = () => {
   }, []);
 
   return (
-    <DefaultScrollView
-      styleView={styles.container}
-      styleScroll={styles.scrollContainer}>
-      <Text>Dashboards</Text>
+    <DefaultView styleView={styles.container}>
+      <DashboardHeader title="My Dashboards" />
       {dashboards.isError && <Text>Error</Text>}
       {dashboards.isLoading ? (
-        <Text>Loading...</Text>
+        <ActivityIndicator size="small" color={theme.colors.primary} />
       ) : (
-        dashboards.data.message.map((item, index) => {
-          return (
-            <Text key={index}>{item.dashboardTitle || item.dashboardName}</Text>
-          );
-        })
+        <FlatList
+          data={dashboards.data.message}
+          renderItem={DashboardListCard}
+          keyExtractor={(item, index) => index.toString()}
+        />
       )}
-    </DefaultScrollView>
+    </DefaultView>
   );
 };
 
