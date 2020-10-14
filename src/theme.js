@@ -6,6 +6,7 @@ const colors = {
   error: '#dc3545',
   warning: '#ffc107',
   info: '#17a2b8',
+  appbar: '#ffffff',
 };
 
 export const theme = {

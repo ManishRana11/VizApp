@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useMemo, useReducer, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-
 import { MainStackNavigator } from './src/navigation/MainStackNavigation';
 import CognitensorEndpoints from './src/services/network/CognitensorEndpoints';
 import CognitensorAsyncStorageService from './src/services/asyncstorage/CognitensorAsyncStorageService';
