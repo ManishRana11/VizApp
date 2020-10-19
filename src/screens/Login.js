@@ -55,23 +55,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    height: '100%',
   },
   image: {
     width: 300,
     height: 300,
     resizeMode: 'contain',
+    justifyContent: 'flex-start',
   },
   scrollContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
     padding: theme.spacing.small,
+    flex: 1,
+    flexDirection: 'column',
+    height: '100%',
   },
   button: {
     alignSelf: 'stretch',
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
-    padding: theme.spacing.small,
     margin: theme.spacing.small,
+    justifyContent: 'flex-end',
+  },
+  input: {
+    marginTop: 'auto',
   },
 });
 

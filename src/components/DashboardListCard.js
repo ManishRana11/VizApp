@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { theme } from '../theme';
 
 const colors = [
@@ -16,11 +16,15 @@ const DashboardListCard = ({ item, index }) => {
   const color = colors[index % colors.length];
   return (
     <View style={styles.item}>
-      <MaterialCommunityIcons name="chart-donut" size={24} color={color} />
+      <View style={[styles.itemLeftIcon, { backgroundColor: color }]}>
+        <MaterialIcons name="bar-chart" size={24} color="#FFFFFF" margin={4} />
+      </View>
       <Text style={styles.itemFont}>
         {item.dashboardTitle || item.dashboardName}
       </Text>
-      <MaterialCommunityIcons name="chevron-right" size={24} color="#4A4A4A" />
+      <View style={styles.itemRightIcon}>
+        <MaterialIcons name="chevron-right" size={24} color="#4A4A4A" />
+      </View>
     </View>
   );
 };
@@ -28,11 +32,10 @@ const DashboardListCard = ({ item, index }) => {
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     backgroundColor: '#FEFFFF',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    padding: theme.spacing.base,
+    marginVertical: theme.spacing.tiny,
+    marginHorizontal: theme.spacing.small,
     borderRadius: 8,
     borderWidth: 0.5,
     borderColor: '#F5EAF1',
@@ -49,6 +52,15 @@ const styles = StyleSheet.create({
   },
   itemFont: {
     ...theme.typography.headline,
+    marginLeft: theme.spacing.tiny,
+  },
+  itemLeftIcon: {
+    justifyContent: 'flex-start',
+    borderRadius: 50,
+  },
+  itemRightIcon: {
+    justifyContent: 'flex-end',
+    marginLeft: 'auto',
   },
 });
 
