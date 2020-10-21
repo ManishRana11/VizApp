@@ -1,7 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Dashboards from '../screens/Dashboards';
-import Account from '../screens/Account';
+import Account from '../screens/account/Account';
+import DashboardActivities from '../screens/account/DashboardActivities';
+import Feedback from '../screens/account/Feedback';
+import Support from '../screens/account/Support';
+import Settings from '../screens/account/Settings';
 import Notification from '../screens/Notification';
 import AppHeader from '../components/AppHeader';
 
@@ -40,6 +44,13 @@ const AccountStackNavigator = () => {
         ),
       }}>
       <Stack.Screen name="Account" component={Account} />
+      <Stack.Screen
+        name="Dashboard Activities"
+        component={DashboardActivities}
+      />
+      <Stack.Screen name="Feedback" component={Feedback} />
+      <Stack.Screen name="Support" component={Support} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 };

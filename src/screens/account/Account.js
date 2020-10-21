@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { AuthContext } from '../context/auth';
-import CognitensorEndpoints from '../services/network/CognitensorEndpoints';
-import { apiStateReducer } from '../reducers/ApiStateReducer';
-import DefaultScrollView from '../components/default/DefaultScrollView';
-import { theme } from '../theme';
+import { AuthContext } from '../../context/auth';
+import CognitensorEndpoints from '../../services/network/CognitensorEndpoints';
+import { apiStateReducer } from '../../reducers/ApiStateReducer';
+import DefaultScrollView from '../../components/default/DefaultScrollView';
+import { theme } from '../../theme';
 
-const Account = () => {
+const Account = ({ navigation }) => {
   const { signOut } = useContext(AuthContext);
   const [userDetails, dispatchUserDetails] = useReducer(apiStateReducer, {
     data: [],
@@ -35,6 +35,26 @@ const Account = () => {
           <Text>{userDetails.data.user.roles}</Text>
         </>
       )}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Dashboard Activities')}
+        style={styles.signOutButton}>
+        <Text>Dashboard Activities</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Feedback')}
+        style={styles.signOutButton}>
+        <Text>Feedback</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Support')}
+        style={styles.signOutButton}>
+        <Text>Support</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Settings')}
+        style={styles.signOutButton}>
+        <Text>Settings</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
         <Text>Sign Out</Text>
       </TouchableOpacity>

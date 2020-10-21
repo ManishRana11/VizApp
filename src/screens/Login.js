@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
+import LoginButton from '../components/LoginButton';
 
 import { theme } from '../theme';
 import { AuthContext } from '../context/auth.js';
@@ -30,6 +31,7 @@ const Login = () => {
           style={styles.input}
           textContentType="emailAddress"
           keyboardType="email-address"
+          placeholder="Email ID"
           value={email}
           onChangeText={setEmail}
         />
@@ -37,15 +39,11 @@ const Login = () => {
           style={styles.input}
           textContentType="password"
           secureTextEntry={true}
+          placeholder="Password"
           value={password}
           onChangeText={setPassword}
         />
-        <TouchableOpacity
-          title="Login"
-          style={styles.button}
-          onPress={() => signIn({ email, password })}>
-          <Text>LOGIN</Text>
-        </TouchableOpacity>
+        <LoginButton onPress={signIn({ email, password })} />
       </ScrollView>
     </View>
   );
@@ -71,11 +69,25 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   button: {
-    alignSelf: 'stretch',
+    // alignSelf: 'stretch',
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
     margin: theme.spacing.small,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    height: theme.spacing.large,
+    backgroundColor: theme.colors.blue,
+    width: 150,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
+  },
+  buttonText: {
+    color: theme.colors.white,
   },
   input: {
     marginTop: 'auto',

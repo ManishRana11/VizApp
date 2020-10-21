@@ -6,9 +6,7 @@ import { theme } from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollContainer: {
-    padding: theme.spacing.small,
+    backgroundColor: theme.colors.white,
   },
 });
 

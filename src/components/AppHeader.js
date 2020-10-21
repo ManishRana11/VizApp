@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { theme } from '../theme';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const AppHeader = ({ scene, previous, navigation, searchVisible = false }) => {
   const { options } = scene.descriptor;
@@ -15,16 +16,18 @@ const AppHeader = ({ scene, previous, navigation, searchVisible = false }) => {
 
   return (
     <View style={styles.header}>
-      <View style={styles.headerLeftIcon} onPress={navigation.pop}>
-        {previous ? (
-          <MaterialIcons name="chevron-left" size={24} style={styles.visible} />
-        ) : (
-          <MaterialIcons
-            name="chevron-left"
-            size={24}
-            style={styles.invisible}
-          />
-        )}
+      <View style={styles.headerLeftIcon}>
+        <TouchableOpacity onPress={navigation.pop}>
+          {previous ? (
+            <MaterialIcons name="chevron-left" size={24} style={styles.visible} />
+          ) : (
+            <MaterialIcons
+              name="chevron-left"
+              size={24}
+              style={styles.invisible}
+            />
+          )}
+        </TouchableOpacity>
       </View>
       <Text style={styles.headerText}>{title}</Text>
       <View style={[styles.headerRightIcon, dropShadowStyle]}>
@@ -53,7 +56,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   headerLeftIcon: {
-    // borderWidth: 1,
     marginRight: 'auto',
     padding: theme.spacing.tiny,
   },

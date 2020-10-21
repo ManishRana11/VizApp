@@ -7,6 +7,8 @@ const colors = {
   warning: '#ffc107',
   info: '#17a2b8',
   appbar: '#ffffff',
+  blue: '#185F8A',
+  white: '#FFFFFF',
 };
 
 export const theme = {

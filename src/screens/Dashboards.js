@@ -21,7 +21,7 @@ const Dashboards = () => {
   }, []);
 
   return (
-    <DefaultView styleView={styles.container}>
+    <DefaultView>
       <DashboardHeader title="My Dashboards" />
       {dashboards.isError && <Text>Error</Text>}
       {dashboards.isLoading ? (
@@ -38,9 +38,6 @@ const Dashboards = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFFFFF',
-  },
   scrollContainer: {
     alignItems: 'center',
     justifyContent: 'center',
