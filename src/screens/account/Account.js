@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import { Avatar } from 'react-native-paper';
 import { AuthContext } from '../../context/auth';
 import CognitensorEndpoints from '../../services/network/CognitensorEndpoints';
 import { apiStateReducer } from '../../reducers/ApiStateReducer';
@@ -21,50 +22,108 @@ const Account = ({ navigation }) => {
   }, []);
 
   return (
-    <DefaultScrollView
-      styleView={styles.container}
-      styleScroll={styles.scrollContainer}>
-      <Text>Account</Text>
-      {userDetails.isError && <Text>Error</Text>}
-      {userDetails.isLoading ? (
-        <Text>Loading...</Text>
-      ) : (
-        <>
-          <Text>{userDetails.data.user.username}</Text>
-          <Text>{userDetails.data.user.local_email}</Text>
-          <Text>{userDetails.data.user.roles}</Text>
-        </>
-      )}
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Dashboard Activities')}
-        style={styles.signOutButton}>
-        <Text>Dashboard Activities</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Feedback')}
-        style={styles.signOutButton}>
-        <Text>Feedback</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Support')}
-        style={styles.signOutButton}>
-        <Text>Support</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Settings')}
-        style={styles.signOutButton}>
-        <Text>Settings</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
-        <Text>Sign Out</Text>
-      </TouchableOpacity>
-    </DefaultScrollView>
+    <>
+      <DefaultScrollView
+        styleView={styles.container}
+        styleScroll={styles.scrollContainer}>
+        <Avatar.Icon size={100} icon="account-circle" style={styles.avatar} />
+        {userDetails.isLoading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <>
+            <Text style={styles.name}>{userDetails.data.user.username}</Text>
+            <Text style={styles.email}>
+              {userDetails.data.user.local_email}
+            </Text>
+            <View style={styles.userInfo}>
+              <View>
+                <Text style={styles.userText}>{userDetails.data.user.id}</Text>
+                <Text style={styles.userSubText}>User ID</Text>
+              </View>
+              <View>
+                <Text style={styles.userText}>
+                  {userDetails.data.user.department || 'Not Assigned'}
+                </Text>
+                <Text style={styles.userSubText}>Department</Text>
+              </View>
+              <View>
+                <Text style={styles.userText}>
+                  {userDetails.data.user.roles || 'Not Assigned'}
+                </Text>
+                <Text style={styles.userSubText}>Role</Text>
+              </View>
+            </View>
+          </>
+        )}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Dashboard Activities')}
+          style={styles.accountButton}>
+          <Text>Dashboard Activities</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Feedback')}
+          style={styles.accountButton}>
+          <Text>Feedback</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Support')}
+          style={styles.accountButton}>
+          <Text>Support</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Settings')}
+          style={styles.accountButton}>
+          <Text>Settings</Text>
+        </TouchableOpacity>
+      </DefaultScrollView>
+      <View>
+        <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
+          <Text style={styles.signOutText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
+  },
+  avatar: {
+    backgroundColor: '#BBBBBB',
+  },
+  name: {
+    marginTop: theme.spacing.small,
+    ...theme.typography.headline,
+  },
+  email: {
+    ...theme.typography.body,
+    fontStyle: 'italic',
+    marginTop: theme.spacing.xTiny,
+    color: 'rgba(99, 99, 99, 0.70)',
+  },
+  userInfo: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    margin: theme.spacing.tiny,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: theme.spacing.small,
+  },
+  userText: {
+    ...theme.typography.body,
+  },
+  userSubText: {
+    color: '#5CA9FF',
+  },
+  accountButton: {
+    backgroundColor: '#FBFBFB',
+    alignSelf: 'stretch',
+    padding: theme.spacing.base,
+    borderBottomWidth: 1.5,
+    borderColor: 'rgba(221, 221, 221, 0.24)',
+    ...theme.typography.body,
   },
   scrollContainer: {
     alignItems: 'center',
@@ -73,9 +132,14 @@ const styles = StyleSheet.create({
   signOutButton: {
     alignSelf: 'stretch',
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#3EB6EF',
+    color: theme.colors.white,
     padding: theme.spacing.small,
   },
+  signOutText: {
+    color: theme.colors.white,
+    ...theme.typography.body,
+  }
 });
 
 export default Account;

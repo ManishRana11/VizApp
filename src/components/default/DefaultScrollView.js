@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   scrollContainer: {
-    padding: theme.spacing.small,
+    // padding: theme.spacing.small,
   },
 });
 
