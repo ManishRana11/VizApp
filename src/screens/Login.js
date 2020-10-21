@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     margin: theme.spacing.small,
     alignSelf: 'stretch',
+    backgroundColor: theme.colors.white,
   },
 });
 

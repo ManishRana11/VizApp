@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   signOutText: {
     color: theme.colors.white,
     ...theme.typography.body,
-  }
+  },
 });
 
 export default Account;
