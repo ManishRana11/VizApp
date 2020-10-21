@@ -1,17 +1,10 @@
 import React, { useContext, useState } from 'react';
-import {
-  View,
-  Image,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
-import LoginButton from '../components/LoginButton';
+import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { TextInput } from 'react-native-paper';
+import DefaultScrollView from '../components/default/DefaultScrollView';
 
 import { theme } from '../theme';
 import { AuthContext } from '../context/auth.js';
-import LoginInput from '../components/LoginInput';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,64 +12,53 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View>
-          <Image
-            style={styles.image}
-            source={require('../assets/LoginImage.png')}
-          />
-        </View>
-        <LoginInput
-          style={styles.input}
-          textContentType="emailAddress"
-          keyboardType="email-address"
-          placeholder="Email ID"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <LoginInput
-          style={styles.input}
-          textContentType="password"
-          secureTextEntry={true}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-        />
-        <LoginButton onPress={signIn({ email, password })} />
-      </ScrollView>
-    </View>
+    <DefaultScrollView styleScroll={styles.scrollContainer}>
+      <Image
+        style={styles.image}
+        source={require('../assets/LoginImage.png')}
+      />
+      <TextInput
+        type="flat"
+        label="Email"
+        value={email}
+        autoCapitalize="none"
+        style={styles.inputContainer}
+        onChangeText={(value) => setEmail(value)}
+      />
+      <TextInput
+        type="flat"
+        label="Password"
+        secureTextEntry={true}
+        value={password}
+        autoCapitalize="none"
+        style={styles.inputContainer}
+        onChangeText={(value) => setPassword(value)}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => signIn({ email, password })}>
+        <Text style={styles.buttonText}>LOGIN</Text>
+      </TouchableOpacity>
+    </DefaultScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    height: '100%',
-  },
   image: {
     width: 300,
     height: 300,
     resizeMode: 'contain',
-    justifyContent: 'flex-start',
-  },
-  scrollContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    padding: theme.spacing.small,
-    flex: 1,
-    flexDirection: 'column',
-    height: '100%',
   },
   button: {
-    // alignSelf: 'stretch',
     alignItems: 'center',
     margin: theme.spacing.small,
     justifyContent: 'center',
     height: theme.spacing.large,
     backgroundColor: theme.colors.blue,
     width: 150,
-    borderRadius: 10,
+    borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -89,8 +71,15 @@ const styles = StyleSheet.create({
   buttonText: {
     color: theme.colors.white,
   },
-  input: {
-    marginTop: 'auto',
+  scrollContainer: {
+    padding: theme.spacing.small,
+    alignItems: 'center',
+    backgroundColor: theme.colors.white,
+    justifyContent: 'space-around',
+  },
+  inputContainer: {
+    margin: theme.spacing.small,
+    alignSelf: 'stretch',
   },
 });
 
