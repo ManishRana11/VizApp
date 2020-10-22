@@ -1,6 +1,14 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import { Avatar } from 'react-native-paper';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import ButtonWithIcon from '../../components/ButtonWithIcon';
 import { AuthContext } from '../../context/auth';
 import CognitensorEndpoints from '../../services/network/CognitensorEndpoints';
 import { apiStateReducer } from '../../reducers/ApiStateReducer';
@@ -28,7 +36,9 @@ const Account = ({ navigation }) => {
         styleScroll={styles.scrollContainer}>
         <Avatar.Icon size={100} icon="account-circle" style={styles.avatar} />
         {userDetails.isLoading ? (
-          <Text>Loading...</Text>
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="small" color={theme.colors.primary} />
+          </View>
         ) : (
           <>
             <Text style={styles.name}>{userDetails.data.user.username}</Text>
@@ -55,29 +65,30 @@ const Account = ({ navigation }) => {
             </View>
           </>
         )}
-        <TouchableOpacity
+        <ButtonWithIcon
+          title="Dashboard Activities"
+          iconName="dashboard"
           onPress={() => navigation.navigate('Dashboard Activities')}
-          style={styles.accountButton}>
-          <Text>Dashboard Activities</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+        <ButtonWithIcon
+          title="Feedback"
+          iconName="feedback"
           onPress={() => navigation.navigate('Feedback')}
-          style={styles.accountButton}>
-          <Text>Feedback</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+        <ButtonWithIcon
+          title="Support"
+          iconName="help"
           onPress={() => navigation.navigate('Support')}
-          style={styles.accountButton}>
-          <Text>Support</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+        <ButtonWithIcon
+          title="Settings"
+          iconName="settings"
           onPress={() => navigation.navigate('Settings')}
-          style={styles.accountButton}>
-          <Text>Settings</Text>
-        </TouchableOpacity>
+        />
       </DefaultScrollView>
       <View>
         <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
+          <MaterialIcons name="login" size={24} color={theme.colors.white} />
           <Text style={styles.signOutText}>Logout</Text>
         </TouchableOpacity>
       </View>
@@ -88,6 +99,10 @@ const Account = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
+  },
+  loadingContainer: {
+    height: 150,
+    padding: theme.spacing.small,
   },
   avatar: {
     backgroundColor: '#BBBBBB',
@@ -117,14 +132,6 @@ const styles = StyleSheet.create({
   userSubText: {
     color: '#5CA9FF',
   },
-  accountButton: {
-    backgroundColor: '#FBFBFB',
-    alignSelf: 'stretch',
-    padding: theme.spacing.base,
-    borderBottomWidth: 1.5,
-    borderColor: 'rgba(221, 221, 221, 0.24)',
-    ...theme.typography.body,
-  },
   scrollContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -132,11 +139,14 @@ const styles = StyleSheet.create({
   signOutButton: {
     alignSelf: 'stretch',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#3EB6EF',
     color: theme.colors.white,
-    padding: theme.spacing.small,
+    padding: theme.spacing.base,
+    flexDirection: 'row',
   },
   signOutText: {
+    marginLeft: theme.spacing.small,
     color: theme.colors.white,
     ...theme.typography.body,
   },
