@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import DefaultView from '../../components/default/DefaultView';
 import ButtonWithIcon from '../../components/ButtonWithIcon';
 
