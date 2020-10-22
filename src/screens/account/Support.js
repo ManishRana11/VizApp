@@ -1,11 +1,13 @@
 import React from 'react';
 import { Text } from 'react-native';
 import DefaultView from '../../components/default/DefaultView';
+import ButtonWithIcon from '../../components/ButtonWithIcon';
 
 const Support = () => {
   return (
     <DefaultView>
-      <Text>Support</Text>
+      <ButtonWithIcon title="Contact Us" iconName="phone" />
+      <ButtonWithIcon title="Mail Us" iconName="mail" />
     </DefaultView>
   );
 };
