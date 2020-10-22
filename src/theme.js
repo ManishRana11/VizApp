@@ -9,6 +9,7 @@ const colors = {
   appbar: '#ffffff',
   blue: '#185F8A',
   white: '#FFFFFF',
+  gray: '#9E9E9E',
 };
 
 export const theme = {

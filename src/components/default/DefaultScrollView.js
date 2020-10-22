@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
 const DefaultScrollView = ({ children, styleView, styleScroll }) => {
   return (
     <View style={[styles.container, styleView]}>
-      <ScrollView contentContainerStyle={[styles.scrollContainer, styleScroll]}>
+      <ScrollView
+        contentContainerStyle={[styles.scrollContainer, styleScroll]}
+        keyboardShouldPersistTaps="handled">
         {children}
       </ScrollView>
     </View>
