@@ -1,13 +1,31 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import DefaultScrollView from '../components/default/DefaultScrollView';
+import NotificationCard from '../components/NotificationCard';
 
 const Notification = () => {
   return (
     <DefaultScrollView
       styleView={styles.container}
       styleScroll={styles.scrollContainer}>
-      <Text>No Notifications</Text>
+      <NotificationCard
+        heading="New Dashboard"
+        avatar="N"
+        body="A new dashboard ‘Akshita’ was added to your wall."
+        color="#3EB6EF"
+      />
+      <NotificationCard
+        heading="New Dashboard"
+        avatar="N"
+        body="A new dashboard ‘Akshita’ was added to your wall."
+        color="#E95280"
+      />
+      <NotificationCard
+        heading="New Dashboard"
+        avatar="N"
+        body="A new dashboard ‘Akshita’ was added to your wall."
+        color="#A1C45A"
+      />
     </DefaultScrollView>
   );
 };
