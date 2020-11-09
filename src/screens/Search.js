@@ -20,6 +20,7 @@ const Search = ({ navigation }) => {
     isError: false,
   });
   const [searchVisible, setSearchVisible] = useState(false);
+  const [filtered, setFiltered] = useState();
 
   const toggleSearchVisibility = () => {
     setSearchVisible(!searchVisible);
@@ -27,7 +28,15 @@ const Search = ({ navigation }) => {
   };
 
   const onChangeSearch = (value) => {
-    console.log(value);
+    if (value === '') {
+      setFiltered(dashboards.data.message);
+    }
+
+    const messages = dashboards.data.message.filter((item) => {
+      const title = item.dashboardTitle || item.dashboardName;
+      return title.toLowerCase().startsWith(value.toLowerCase());
+    });
+    setFiltered(messages);
   };
 
   useEffect(() => {
@@ -53,7 +62,7 @@ const Search = ({ navigation }) => {
         <FlatList
           key={0}
           numColumns={1}
-          data={dashboards.data.message}
+          data={filtered}
           renderItem={DashboardListCard}
           keyExtractor={(item, index) => index.toString()}
         />

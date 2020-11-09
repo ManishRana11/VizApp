@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Searchbar } from 'react-native-paper';
 import { theme } from '../theme';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -36,7 +35,11 @@ const AppHeader = ({
                 style={styles.visible}
               />
             ) : (
-              <MaterialIcons name="chevron-left" size={24} />
+              <MaterialIcons
+                name="chevron-left"
+                size={24}
+                style={styles.invisible}
+              />
             )}
           </TouchableOpacity>
         </View>
@@ -83,6 +86,7 @@ const styles = StyleSheet.create({
   },
   invisible: {
     width: 40,
+    color: '#FFFFFF',
   },
   visible: {
     color: '#000',
