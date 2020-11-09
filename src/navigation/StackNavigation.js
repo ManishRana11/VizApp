@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Dashboards from '../screens/Dashboards';
+import Search from '../screens/Search';
 import Account from '../screens/account/Account';
 import DashboardActivities from '../screens/account/DashboardActivities';
 import Feedback from '../screens/account/Feedback';
@@ -21,11 +22,16 @@ const DashboardStackNavigator = () => {
             scene={scene}
             previous={previous}
             navigation={navigation}
-            searchVisible={true}
+            searchIconVisible={true}
           />
         ),
       }}>
       <Stack.Screen name="Home" component={Dashboards} />
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
