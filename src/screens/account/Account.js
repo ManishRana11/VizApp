@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import {
   Text,
-  TouchableOpacity,
+  TouchableHighlight,
   StyleSheet,
   View,
   ActivityIndicator,
@@ -87,10 +87,12 @@ const Account = ({ navigation }) => {
         />
       </DefaultScrollView>
       <View>
-        <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
-          <MaterialIcons name="login" size={24} color={theme.colors.white} />
-          <Text style={styles.signOutText}>Logout</Text>
-        </TouchableOpacity>
+        <TouchableHighlight onPress={signOut}>
+          <View style={styles.signOutButton}>
+            <MaterialIcons name="login" size={24} color={theme.colors.white} />
+            <Text style={styles.signOutText}>Logout</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import {
   Image,
   StyleSheet,
-  TouchableOpacity,
+  TouchableHighlight,
   Text,
   Keyboard,
   View,
@@ -23,6 +23,8 @@ const Login = () => {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  // TODO: Need to add validation
 
   return (
     <DefaultScrollView styleScroll={styles.scrollContainer}>
@@ -63,7 +65,7 @@ const Login = () => {
           />
         }
       />
-      <TouchableOpacity
+      <TouchableHighlight
         style={styles.button}
         onPress={() => {
           Keyboard.dismiss();
@@ -77,7 +79,7 @@ const Login = () => {
             color={theme.colors.white}
           />
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     </DefaultScrollView>
   );
 };
@@ -91,13 +93,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    alignItems: 'center',
-    margin: theme.spacing.small,
+    flex: 1,
     justifyContent: 'center',
+    borderRadius: 8,
+    marginVertical: theme.spacing.small,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    width: 150,
+    padding: theme.spacing.small,
     height: theme.spacing.large,
     backgroundColor: theme.colors.blue,
-    width: 150,
-    borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -106,13 +115,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    width: 80,
   },
   buttonText: {
     color: theme.colors.white,

@@ -1,16 +1,18 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, TouchableHighlight, StyleSheet, Text } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { theme } from '../theme';
 
 const ButtonWithIcon = ({ title, iconName, onPress }) => {
   return (
-    <TouchableOpacity style={styles.buttonContainer} onPress={() => onPress()}>
+    <TouchableHighlight
+      style={styles.buttonContainer}
+      onPress={() => onPress()}>
       <View style={styles.buttonViewContainer}>
         <MaterialIcons name={iconName} size={24} color="#C4C4C4" />
         <Text style={styles.buttonText}>{title}</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
