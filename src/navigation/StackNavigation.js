@@ -9,6 +9,7 @@ import Support from '../screens/account/Support';
 import Settings from '../screens/account/Settings';
 import Notification from '../screens/Notification';
 import AppHeader from '../components/AppHeader';
+import DashboardDetail from '../screens/DashboardDetail';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ const DashboardStackNavigator = () => {
         name="Search"
         component={Search}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Dashboard Detail"
+        component={DashboardDetail}
+        options={({ route }) => ({ title: route.params.name })}
       />
     </Stack.Navigator>
   );

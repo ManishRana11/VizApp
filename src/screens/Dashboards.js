@@ -8,7 +8,7 @@ import DashboardListCard from '../components/DashboardListCard';
 import DashboardGridCard from '../components/DashboardGridCard';
 import { theme } from '../theme';
 
-const Dashboards = () => {
+const Dashboards = ({ navigation }) => {
   const [dashboards, dispatchDashboards] = useReducer(apiStateReducer, {
     data: [],
     isLoading: true,
@@ -41,7 +41,31 @@ const Dashboards = () => {
           key={gridView ? 1 : 0}
           numColumns={gridView ? 2 : 1}
           data={dashboards.data.message}
-          renderItem={gridView ? DashboardGridCard : DashboardListCard}
+          renderItem={
+            gridView
+              ? ({ item, index }) => (
+                  <DashboardGridCard
+                    item={item}
+                    index={index}
+                    onPress={() =>
+                      navigation.navigate('Dashboard Detail', {
+                        name: item.dashboardTitle || item.dashboardName,
+                      })
+                    }
+                  />
+                )
+              : ({ item, index }) => (
+                  <DashboardListCard
+                    item={item}
+                    index={index}
+                    onPress={() =>
+                      navigation.navigate('Dashboard Detail', {
+                        name: item.dashboardTitle || item.dashboardName,
+                      })
+                    }
+                  />
+                )
+          }
           keyExtractor={(item, index) => index.toString()}
         />
       )}

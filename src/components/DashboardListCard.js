@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { theme } from '../theme';
 
@@ -12,24 +12,40 @@ const colors = [
   '#FF4E4E',
 ];
 
-const DashboardListCard = ({ item, index }) => {
+const DashboardListCard = ({ item, index, onPress }) => {
   const color = colors[index % colors.length];
+
+  // useEffect(() => {
+  //   console.log(item);
+  // });
   return (
-    <View style={styles.item}>
-      <View style={[styles.itemLeftIcon, { backgroundColor: color }]}>
-        <MaterialIcons name="bar-chart" size={24} color="#FFFFFF" margin={4} />
+    <TouchableWithoutFeedback
+      style={styles.itemContainer}
+      onPress={() => onPress()}>
+      <View style={styles.item}>
+        <View style={[styles.itemLeftIcon, { backgroundColor: color }]}>
+          <MaterialIcons
+            name="bar-chart"
+            size={24}
+            color="#FFFFFF"
+            margin={4}
+          />
+        </View>
+        <Text style={styles.itemFont}>
+          {item.dashboardTitle || item.dashboardName}
+        </Text>
+        <View style={styles.itemRightIcon}>
+          <MaterialIcons name="chevron-right" size={24} color="#4A4A4A" />
+        </View>
       </View>
-      <Text style={styles.itemFont}>
-        {item.dashboardTitle || item.dashboardName}
-      </Text>
-      <View style={styles.itemRightIcon}>
-        <MaterialIcons name="chevron-right" size={24} color="#4A4A4A" />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
+  itemContainer: {
+    alignSelf: 'stretch',
+  },
   item: {
     flexDirection: 'row',
     backgroundColor: '#FEFFFF',

@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   View,
   StyleSheet,
+  Keyboard,
 } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { apiStateReducer } from '../reducers/ApiStateReducer';
@@ -60,10 +61,22 @@ const Search = ({ navigation }) => {
         <ActivityIndicator size="small" color={theme.colors.primary} />
       ) : (
         <FlatList
+          keyboardShouldPersistTaps={'handled'}
           key={0}
           numColumns={1}
           data={filtered}
-          renderItem={DashboardListCard}
+          renderItem={({ item, index }) => (
+            <DashboardListCard
+              item={item}
+              index={index}
+              onPress={() => {
+                Keyboard.dismiss();
+                navigation.navigate('Dashboard Detail', {
+                  name: item.dashboardTitle || item.dashboardName,
+                });
+              }}
+            />
+          )}
           keyExtractor={(item, index) => index.toString()}
         />
       )}
