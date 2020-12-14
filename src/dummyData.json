@@ -1,0 +1,1128 @@
+{
+  "dashboardType": "Single",
+  "dashboardTitle": "RR",
+  "noTabs": 1,
+  "tabsConfig": [
+    {
+      "name": "First Tab",
+      "tooltip": "some other name and tooltip",
+      "components": [
+        {
+          "name": "SimpleTable",
+          "query": "select distinct sales_id as name from karamschema.sales order by name",
+          "title": " Table select distinct sales_id as name bla bla",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 2,
+                "i": "0",
+                "w": 3,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 2,
+                "i": "1",
+                "w": 3,
+                "x": 3,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "layoutcv": {
+            "lg": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 6,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 6,
+                "x": 6,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "2",
+                "w": 6,
+                "x": 0,
+                "y": 3,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "3",
+                "w": 6,
+                "x": 6,
+                "y": 3,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "4",
+                "w": 6,
+                "x": 0,
+                "y": 6,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "5",
+                "w": 6,
+                "x": 6,
+                "y": 6,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "6",
+                "w": 6,
+                "x": 0,
+                "y": 9,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "7",
+                "w": 6,
+                "x": 6,
+                "y": 9,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "8",
+                "w": 6,
+                "x": 0,
+                "y": 12,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "9",
+                "w": 6,
+                "x": 6,
+                "y": 12,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "10",
+                "w": 6,
+                "x": 0,
+                "y": 15,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "11",
+                "w": 6,
+                "x": 6,
+                "y": 15,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "12",
+                "w": 6,
+                "x": 0,
+                "y": 18,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "13",
+                "w": 6,
+                "x": 6,
+                "y": 18,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "14",
+                "w": 6,
+                "x": 0,
+                "y": 21,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "15",
+                "w": 6,
+                "x": 6,
+                "y": 21,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "md": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 3,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 3,
+                "x": 3,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "sm": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 6,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 6,
+                "x": 2,
+                "y": 3,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "2",
+                "w": 6,
+                "x": 0,
+                "y": 6,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "3",
+                "w": 6,
+                "x": 2,
+                "y": 9,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "4",
+                "w": 6,
+                "x": 0,
+                "y": 12,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "5",
+                "w": 6,
+                "x": 2,
+                "y": 15,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "6",
+                "w": 6,
+                "x": 0,
+                "y": 18,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "7",
+                "w": 6,
+                "x": 2,
+                "y": 21,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "8",
+                "w": 6,
+                "x": 0,
+                "y": 24,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "9",
+                "w": 6,
+                "x": 2,
+                "y": 27,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "10",
+                "w": 6,
+                "x": 0,
+                "y": 30,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "11",
+                "w": 6,
+                "x": 2,
+                "y": 33,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "12",
+                "w": 6,
+                "x": 0,
+                "y": 36,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "13",
+                "w": 6,
+                "x": 2,
+                "y": 39,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "14",
+                "w": 6,
+                "x": 0,
+                "y": 42,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "15",
+                "w": 6,
+                "x": 2,
+                "y": 45,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "xs": [
+              {
+                "h": 3,
+                "i": "#",
+                "w": 4,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [
+            {
+              "name": "SimpleCard",
+              "query": "select sum(quantity) from karamschema.sales where '%{name}'=sales_id",
+              "title": "card",
+              "downloadable": true
+            },
+            {
+              "name": "SimpleCard",
+              "query": "select sum(quantity) from karamschema.sales",
+              "title": "card"
+            }
+          ],
+          "filterable": "true",
+          "downloadable": true,
+          "noDataMessage": "No data sorry",
+          "emailConnector": true
+        },
+        {
+          "name": "LineChart",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Line mark",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 4,
+                "i": "0",
+                "w": 3,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 4,
+                "x": 3,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "md": [
+              {
+                "h": 4,
+                "i": "0",
+                "w": 3,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 4,
+                "x": 3,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [
+            {
+              "name": "SimpleTable",
+              "query": "select extract(year from invoice_date) as year, avg(quantity) as quantity from karamschema.sales where quantity > %{quantity} group by year order by year",
+              "title": "table",
+              "downloadable": true
+            },
+            {
+              "name": "SimpleTable",
+              "query": "select extract(year from invoice_date) as year, avg(quantity) as quantity from karamschema.sales where quantity > %{quantity} group by year order by year",
+              "title": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ",
+              "downloadable": true
+            }
+          ],
+          "downloadable": true,
+          "switchComponents": true
+        },
+        {
+          "name": "AreaChart",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Area",
+          "colors": "pink,#e08283,#db0a5b",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 6,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 6,
+                "x": 6,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [
+            {
+              "name": "SimpleTable",
+              "query": "select extract(year from invoice_date) as year, avg(quantity) as quantity from karamschema.sales where quantity > %{quantity} group by year order by year",
+              "title": "tablee"
+            },
+            {
+              "name": "LineChart",
+              "query": "select extract(year from invoice_date) as year, avg(quantity)::integer as quantity from karamschema.sales where quantity > %{quantity} group by year order by year",
+              "title": "line"
+            }
+          ],
+          "noDataMessage": "No data",
+          "emailConnector": false,
+          "switchComponents": true
+        },
+        {
+          "name": "BarGraph",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Bar",
+          "tooltip": "bar graph",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 6,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [
+            {
+              "name": "AreaChart",
+              "query": "select extract(year from invoice_date) as year, avg(quantity)::integer as quantity from karamschema.sales where quantity > %{quantity} group by year order by year",
+              "title": "area",
+              "downloadable": true
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "LineChart",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Line chart",
+          "components": [
+            {
+              "name": "BarGraph",
+              "query": "select extract(year from invoice_date) as year, avg(quantity)::integer as quantity from karamschema.sales where quantity > %{quantity} group by year order by year",
+              "title": "bar"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "BubbleChart",
+          "query": "select distinct extract(year from invoice_date)::text as year,\nsum(sales_amount) as sales,\ncount(sales_id)::integer as count,\n0 as some,\navg(sales_amount / quantity) as ball_size\nfrom karamschema.sales\ngroup by year\norder by year",
+          "title": "Bubble",
+          "components": [
+            {
+              "name": "AreaChart",
+              "query": "select extract(year from invoice_date) as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "CandlestickChart",
+          "query": "select distinct extract(year from invoice_date)::text as year,\nmin(sales_amount) as mini,\n0 as initial,\navg(sales_amount) as final,\nmax(sales_amount) as maxi\nfrom karamschema.sales\ngroup by extract(year from invoice_date)\norder by year",
+          "title": "Candlestick",
+          "components": [
+            {
+              "name": "LineMark",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "line mark"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "Histogram",
+          "query": "select distinct extract(year from invoice_date)::text as year, sum(quantity) as quantity from karamschema.sales group by year",
+          "title": "Histogram",
+          "components": [
+            {
+              "name": "BarGraph",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "bar"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "PieChart",
+          "query": "select distinct extract(year from invoice_date)::text as year, sum(quantity) as quantity from karamschema.sales group by year",
+          "title": "Pie",
+          "components": [
+            {
+              "name": "AreaChart",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "area"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "SankeyChart",
+          "query": "select pd.item_code, cd.name, sum(sales_amount) FROM karamschema.sales as ks\nINNER JOIN karamschema.product_description as pd ON ks.item_id = pd.item_id\nINNER JOIN karamschema.client_description as cd ON ks.client_id = cd.client_id\nwhere extract(year from invoice_date) = '2018' and sales_amount > 0\ngroup by pd.item_code, cd.name limit 10",
+          "title": "Sankey",
+          "components": [
+            {
+              "name": "BarGraph",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "bar"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "ScatterPlot",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Scatter",
+          "components": [
+            {
+              "name": "AreaChart",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "area"
+            }
+          ],
+          "materialChart": "false",
+          "switchComponents": true
+        },
+        {
+          "name": "StackedBarGraph",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Stacked Bar",
+          "components": [
+            {
+              "name": "BarGraph",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "bar"
+            }
+          ]
+        },
+        {
+          "name": "WaterfallChart",
+          "query": "select distinct extract(year from invoice_date)::text as year,\nmin(sales_amount) as mini,\n0 as initial,\navg(sales_amount) as final,\nmax(sales_amount) as maxi\nfrom karamschema.sales\ngroup by extract(year from invoice_date)\norder by year",
+          "title": "Waterfall",
+          "components": [
+            {
+              "name": "BarGraph",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "bar"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "TreeMap",
+          "title": "Treemap",
+          "components": []
+        },
+        {
+          "name": "MixAndMatch",
+          "query": "SELECT DISTINCT extract(year from invoice_date)::text AS year,\nAVG(sales_amount) over(partition by extract(year from invoice_date)) AS sales,\nAVG(quantity) over(partition by extract(year from invoice_date)) AS quantity\nFROM karamschema.sales\nWHERE invoice_date\nBETWEEN '2018-04-01' and DATE('2018-03-31') + interval '1 year' ORDER BY year",
+          "title": "Mix and match",
+          "components": [
+            {
+              "name": "AreaChart",
+              "query": "select extract(year from invoice_date)::text as year, avg(quantity)::integer as quantity from karamschema.sales where extract(year from invoice_date)='%{year}' group by year order by year",
+              "title": "area"
+            }
+          ],
+          "switchComponents": true
+        },
+        {
+          "name": "SimpleCard",
+          "query": "select 40 as sum",
+          "title": "card",
+          "tooltip": "this is simple card tooltip check",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 3,
+                "i": "#",
+                "w": 12,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "md": [
+              {
+                "h": 3,
+                "i": "#",
+                "w": 10,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [],
+          "downloadable": true
+        },
+        {
+          "name": "BlogCard",
+          "query": "select 'Refills and transfers' as header, 'Refill ind with 4 units\\nDont refill\\nRefill ind with 4 units\\nDont refill\\nRefill ind with 4 units\\nDont refill\\nRefill ind with 4 units' as body",
+          "color1": "",
+          "color2": "",
+          "layoutcc": {
+            "md": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 6,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "textSize": "",
+          "textAlign": "",
+          "textColor": "",
+          "activeItem": "true",
+          "components": [
+            {
+              "name": "SimpleCard",
+              "query": "select %{header} as sum"
+            }
+          ],
+          "itemMargin": "",
+          "listMargin": "",
+          "headerAlign": "",
+          "headerColor": ""
+        },
+        {
+          "name": "SimpleTable",
+          "query": "select distinct sales_id as name from karamschema.sales order by name",
+          "title": "tablee",
+          "components": [],
+          "downloadable": true,
+          "switchComponents": true
+        },
+        {
+          "name": "SimpleTable",
+          "query": "select distinct sales_id as name from karamschema.sales order by name",
+          "title": "select",
+          "components": [],
+          "downloadable": true
+        },
+        {
+          "name": "SingleCircularProgress",
+          "query": "select 80 as per",
+          "title": "circular bar",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 4,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 4,
+                "x": 8,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "2",
+                "w": 4,
+                "x": 4,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "3",
+                "w": 4,
+                "x": 0,
+                "y": 3,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 2,
+                "i": "4",
+                "w": 4,
+                "x": 4,
+                "y": 3,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "md": [
+              {
+                "h": 2,
+                "i": "0",
+                "w": 5,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [
+            {
+              "name": "SimpleCard",
+              "query": "select %{per} as sum",
+              "title": "sum card c in c",
+              "tooltip": "bla bla"
+            },
+            {
+              "name": "SimpleCard",
+              "query": "select 400000000 as sum"
+            },
+            {
+              "name": "SimpleCard",
+              "query": "select 5000000 as sum"
+            },
+            {
+              "name": "SimpleCard",
+              "query": "select 55555 as sum"
+            },
+            {
+              "name": "LiquidGauge",
+              "query": "select 55 as sum"
+            }
+          ],
+          "downloadable": true,
+          "emailConnector": true,
+          "switchComponents": true
+        },
+        {
+          "name": "BlogCard",
+          "query": "select '${0}' as header, '#{0}' as body",
+          "components": []
+        },
+        {
+          "name": "SingleCircularProgress",
+          "query": "select 90 as per",
+          "title": "circular bar",
+          "layoutcc": {
+            "lg": [
+              {
+                "h": 3,
+                "i": "0",
+                "w": 3,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "1",
+                "w": 6,
+                "x": 6,
+                "y": 0,
+                "moved": false,
+                "static": false
+              },
+              {
+                "h": 3,
+                "i": "2",
+                "w": 3,
+                "x": 3,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ],
+            "md": [
+              {
+                "h": 2,
+                "i": "0",
+                "w": 5,
+                "x": 0,
+                "y": 0,
+                "moved": false,
+                "static": false
+              }
+            ]
+          },
+          "components": [
+            {
+              "name": "SimpleCard",
+              "query": "select %{per} as sum",
+              "title": "sum card c in c",
+              "tooltip": "bla bla"
+            },
+            {
+              "name": "SimpleCard",
+              "query": "select 400000000 as sum"
+            },
+            {
+              "name": "SimpleCard",
+              "query": "select 50 as sum"
+            }
+          ],
+          "downloadable": true,
+          "emailConnector": true,
+          "switchComponents": true
+        },
+        {
+          "name": "LiquidGauge",
+          "query": "select 71 as gauge",
+          "components": []
+        },
+        {
+          "name": "SimpleCard",
+          "query": "select 580 as sum",
+          "tooltip": "this is simple card tooltip check",
+          "components": []
+        },
+        {
+          "name": "SimpleCard",
+          "query": "select 379 as sum",
+          "components": []
+        },
+        {
+          "name": "BlogCard",
+          "query": "select 'Information' as header,\n'G-South, E, D, & H-East wards have registered more than 40% of the total covid cases in mumbai\\n\nCovid-19 cases rose from 58 on April 4 to 280 on April 12 in G-South ward\\n\nOver 20% of Mumbai''s Covid-19 cases are from G-South ward\\n\nCovid-19 cases in Mumbai is higher in more densely populated wards'\nas body",
+          "components": []
+        },
+        {
+          "name": "BlogCard",
+          "query": "select 'Customer names' as header,\n'V.K Traders'\nas body",
+          "components": []
+        },
+        {
+          "name": "BlogCard",
+          "query": "select 'Customer names' as header,\n'V.K Bla bla'\nas body",
+          "components": []
+        }
+      ],
+      "noRFilters": 2,
+      "noNRFilters": 2,
+      "walkthrough": [
+        {
+          "id": "index0",
+          "title": "SimpleTable",
+          "target": 0,
+          "content": "test"
+        },
+        {
+          "id": "index1",
+          "title": "LineMark",
+          "target": 1,
+          "content": "testt"
+        },
+        {
+          "id": "index2",
+          "title": "AreaChart",
+          "target": 2,
+          "content": "test"
+        },
+        {
+          "id": "index3",
+          "title": "BarGraph",
+          "target": 3,
+          "content": "test"
+        },
+        {
+          "id": "index4",
+          "title": "LineChart",
+          "target": 4,
+          "content": "test"
+        },
+        {
+          "id": "index5",
+          "title": "BubbleChart",
+          "target": 5,
+          "content": "test"
+        },
+        {
+          "id": "index6",
+          "title": "CandlestickChart",
+          "target": 6,
+          "content": "test"
+        },
+        {
+          "id": "index7",
+          "title": "Histogram",
+          "target": 7,
+          "content": "test"
+        },
+        {
+          "id": "index8",
+          "title": "PieChart",
+          "target": 8,
+          "content": ""
+        },
+        {
+          "id": "index9",
+          "title": "SankeyChart",
+          "target": 9,
+          "content": ""
+        },
+        {
+          "id": "index10",
+          "title": "ScatterPlot",
+          "target": 10,
+          "content": ""
+        },
+        {
+          "id": "index11",
+          "title": "StackedBarGraph",
+          "target": 11,
+          "content": ""
+        },
+        {
+          "id": "index12",
+          "title": "WaterfallChart",
+          "target": 12,
+          "content": ""
+        },
+        {
+          "id": "index13",
+          "title": "TreeMap",
+          "target": 13,
+          "content": ""
+        },
+        {
+          "id": "index14",
+          "title": "MixAndMatch",
+          "target": 14,
+          "content": ""
+        },
+        {
+          "id": "index15",
+          "title": "SimpleCard",
+          "target": 15,
+          "content": ""
+        },
+        {
+          "id": "index16",
+          "title": "BlogCard",
+          "target": 16,
+          "content": ""
+        },
+        {
+          "id": "index17",
+          "title": "SimpleTable",
+          "target": 17,
+          "content": ""
+        },
+        {
+          "id": "index18",
+          "title": "SimpleTable",
+          "target": 18,
+          "content": ""
+        },
+        {
+          "id": "index19",
+          "title": "SingleCircularProgress",
+          "target": 19,
+          "content": ""
+        },
+        {
+          "id": "index20",
+          "title": "BlogCard",
+          "target": 20,
+          "content": ""
+        },
+        {
+          "id": "index22",
+          "title": "LiquidGauge",
+          "target": 22,
+          "content": ""
+        }
+      ],
+      "noComponents": 23,
+      "nonReqdFilters": [
+        {
+          "name": "calennnnn",
+          "type": "calendar",
+          "query": "select invoice_date::date::text as date from karamschema.sales limit 10",
+          "column": "date"
+        },
+        {
+          "name": "hjfj",
+          "type": "input"
+        }
+      ],
+      "requiredFilters": [
+        {
+          "name": "calendar",
+          "type": "calendar",
+          "query": "",
+          "column": ""
+        },
+        {
+          "name": "bllaaaa",
+          "type": "calendar",
+          "query": "",
+          "column": ""
+        },
+        {
+          "name": "Date range filter",
+          "type": "daterange",
+          "query": "select invoice_date::date::text as date from karamschema.sales group by date order by date desc limit 20",
+          "column": "date"
+        }
+      ],
+      "filterWalkthrough": [
+        {
+          "id": "index0",
+          "title": "calendar",
+          "target": 0,
+          "content": ""
+        },
+        {
+          "id": "index1",
+          "title": "bllaaaa",
+          "target": 1,
+          "content": ""
+        }
+      ]
+    },
+    {
+      "name": "Second Tab"
+    },
+    {
+      "name": "Third Tab"
+    },
+    {
+      "name": "Fourth Tab"
+    },
+    {
+      "name": "Fifth Tab"
+    }
+  ],
+  "dbName": "Development",
+  "dbCaching": true,
+  "pypuffFile": null,
+  "deactivated": false,
+  "deactiveDuration": 0,
+  "deactiveTime": "",
+  "feedbackEmails": "",
+  "deactivateFilter": false,
+  "filterPosition": "Right"
+}
