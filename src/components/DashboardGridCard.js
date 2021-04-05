@@ -3,6 +3,7 @@ import { Text, StyleSheet, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { theme } from '../theme';
+import { useNavigation } from '@react-navigation/native';
 
 const colors = [
   '#FF8DD7',
@@ -15,10 +16,15 @@ const colors = [
 
 const DashboardListCard = ({ item, index, onPress }) => {
   const color = colors[index % colors.length];
+  const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
       style={styles.itemContainer}
-      onPress={() => onPress()}>
+      onPress={() =>
+        navigation.navigate('Dashboard Detail', {
+          name: item.dashboardTitle || item.dashboardName,
+        })
+      }>
       <View style={styles.item}>
         <View style={styles.iconContainer}>
           <View style={[styles.itemLeftIcon, { backgroundColor: color }]}>

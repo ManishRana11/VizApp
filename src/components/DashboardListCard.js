@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { theme } from '../theme';
+import { useNavigation } from '@react-navigation/native';
 
 const colors = [
   '#FF8DD7',
@@ -12,16 +13,36 @@ const colors = [
   '#FF4E4E',
 ];
 
-const DashboardListCard = ({ item, index, onPress }) => {
+const DashboardListCard = ({ item, index }) => {
   const color = colors[index % colors.length];
+  const navigation = useNavigation();
+  //const [isLoading, setLoading] = useState(true);
+  //const [data, setData] = useState([]);
+
+  //useEffect(() => {
+  //fetch('https://reactnative.dev/movies.json')
+  //.then((response) => response.json())
+  //.then((json) => setData(json.movies))
+  //.catch((error) => console.error(error))
+  //.finally(() => setLoading(false));
+  //}, []);
 
   // useEffect(() => {
-  //   console.log(item);
+  //   console.log(item);Feedback
   // });
+
+  //useEffect(() => {
+  //CognitensorEndpoints.getDashboard({});
+  //}, []);
+
   return (
     <TouchableWithoutFeedback
       style={styles.itemContainer}
-      onPress={() => onPress()}>
+      onPress={() =>
+        navigation.navigate('Dashboard Detail', {
+          name: item.dashboardTitle || item.dashboardName,
+        })
+      }>
       <View style={styles.item}>
         <View style={[styles.itemLeftIcon, { backgroundColor: color }]}>
           <MaterialIcons
@@ -68,7 +89,7 @@ const styles = StyleSheet.create({
   },
   itemFont: {
     ...theme.typography.headline,
-    marginLeft: theme.spacing.tiny,
+    marginLeft: theme.spacing.large,
   },
   itemLeftIcon: {
     justifyContent: 'flex-start',

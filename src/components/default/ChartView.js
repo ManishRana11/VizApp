@@ -52,9 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  title: {
-
-  },
+  title: {},
   icons: {
     flexDirection: 'row',
   },

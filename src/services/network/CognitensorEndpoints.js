@@ -3,6 +3,36 @@ import CognitensorAsyncStorageService from '../asyncstorage/CognitensorAsyncStor
 import { CLIENT_USER_URL } from '../../constants';
 
 class CognitensorEndpoints {
+  //---------------------------------------------Dashboard_Data---------------------------------------------
+  apk = async ({ url, method, dispatchDashboard }) => {
+    dispatchDashboard({ type: 'API_FETCH_DATA_INIT' });
+    const tokenUsed = await CognitensorAsyncStorageService.getUserToken();
+    const dashConfig = {
+      method,
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokenUsed}`,
+      },
+    };
+
+    // TODO: Check if device is online
+    axios(dashConfig)
+      .then((dash) => {
+        if (dash.status === 200) {
+          dispatchDashboard({
+            type: 'API_FETCH_DATA_SUCCESS',
+            payload: dash.dashData,
+          });
+        }
+      })
+      .catch((errr) => {
+        dispatchDashboard({ type: 'API_FETCH_DATA_FAILURE' });
+        console.warn(errr);
+      });
+  };
+  //---------------------------------------------------------------------------------------------------------------
+
   api = async ({ url, method, dispatchReducer }) => {
     dispatchReducer({ type: 'API_FETCH_INIT' });
     const token = await CognitensorAsyncStorageService.getUserToken();
@@ -77,6 +107,16 @@ class CognitensorEndpoints {
     });
   };
 
+  //-------------------------------------------------dashboard api-------------------------------------------------
+  getDashboard = async ({ dispatchDashboard }) => {
+    await this.apk({
+      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
+      method: 'get',
+      dispatchDashboard,
+    });
+  };
+  //---------------------------------------------------------------------------------------------------------------
+
   getDashboardList = async ({ dispatchReducer }) => {
     await this.api({
       url: `${CLIENT_USER_URL}/cogniviz/dashboard/titles`,
@@ -87,3 +127,5 @@ class CognitensorEndpoints {
 }
 
 export default new CognitensorEndpoints();
+
+//https://console.cognitensor.com/api/userapi/cogniviz/get/dashboardconfig/rr
