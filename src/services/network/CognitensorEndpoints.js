@@ -3,31 +3,35 @@ import CognitensorAsyncStorageService from '../asyncstorage/CognitensorAsyncStor
 import { CLIENT_USER_URL } from '../../constants';
 
 class CognitensorEndpoints {
+  token = '';
   //---------------------------------------------Dashboard_Data---------------------------------------------
-  apk = async ({ url, method, dispatchDashboard }) => {
-    dispatchDashboard({ type: 'API_FETCH_DATA_INIT' });
-    const tokenUsed = await CognitensorAsyncStorageService.getUserToken();
+  apk = ({ url, method, dispatchReducer }) => {
+    dispatchReducer({ type: 'API_FETCH_DATA_INIT' });
+    console.log('ret');
+    console.log('gfg', this.token);
     const dashConfig = {
       method,
       url,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${tokenUsed}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
     // TODO: Check if device is online
     axios(dashConfig)
       .then((dash) => {
-        if (dash.status === 200) {
-          dispatchDashboard({
-            type: 'API_FETCH_DATA_SUCCESS',
-            payload: dash.dashData,
-          });
-        }
+        console.log(dash);
+        // if (dash.status === 200) {
+        //   dispatchReducer({
+        //     type: 'API_FETCH_DATA_SUCCESS',
+        //     payload: dash.data,
+        //   });
+        // }
       })
       .catch((errr) => {
-        dispatchDashboard({ type: 'API_FETCH_DATA_FAILURE' });
+        console.log(errr);
+        dispatchReducer({ type: 'API_FETCH_DATA_FAILURE' });
         console.warn(errr);
       });
   };
@@ -35,13 +39,13 @@ class CognitensorEndpoints {
 
   api = async ({ url, method, dispatchReducer }) => {
     dispatchReducer({ type: 'API_FETCH_INIT' });
-    const token = await CognitensorAsyncStorageService.getUserToken();
+    this.token = await CognitensorAsyncStorageService.getUserToken();
     const reqConfig = {
       method,
       url,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
@@ -107,12 +111,12 @@ class CognitensorEndpoints {
     });
   };
 
-  //-------------------------------------------------dashboard api-------------------------------------------------
-  getDashboard = async ({ dispatchDashboard }) => {
+  //-------------------------------------------------dashboard_api-------------------------------------------------
+  getDashboard = async ({ dispatchReducer }) => {
     await this.apk({
       url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
       method: 'get',
-      dispatchDashboard,
+      dispatchReducer,
     });
   };
   //---------------------------------------------------------------------------------------------------------------

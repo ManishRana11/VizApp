@@ -11,7 +11,7 @@ export const apkStateReducer = (state, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        dashData: action.payload,
+        data: action.payload,
       };
     case 'API_FETCH_DATA_FAILURE':
       return {
