@@ -7,8 +7,8 @@ class CognitensorEndpoints {
   //---------------------------------------------Dashboard_Data---------------------------------------------
   apk = ({ url, method, dispatchReducer }) => {
     dispatchReducer({ type: 'API_FETCH_DATA_INIT' });
-    console.log('ret');
-    console.log('gfg', this.token);
+    console.log('apk_hit');
+    console.log('apk_token', this.token);
     const dashConfig = {
       method,
       url,
@@ -21,13 +21,14 @@ class CognitensorEndpoints {
     // TODO: Check if device is online
     axios(dashConfig)
       .then((dash) => {
-        console.log(dash);
-        // if (dash.status === 200) {
-        //   dispatchReducer({
-        //     type: 'API_FETCH_DATA_SUCCESS',
-        //     payload: dash.data,
-        //   });
-        // }
+        console.log('dashconfig', dashConfig);
+        console.log('dash', dash);
+        if (dash.status === 200) {
+          dispatchReducer({
+            type: 'API_FETCH_DATA_SUCCESS',
+            payload: dash.data,
+          });
+        }
       })
       .catch((errr) => {
         console.log(errr);
@@ -39,7 +40,9 @@ class CognitensorEndpoints {
 
   api = async ({ url, method, dispatchReducer }) => {
     dispatchReducer({ type: 'API_FETCH_INIT' });
+    console.log('api_hit');
     this.token = await CognitensorAsyncStorageService.getUserToken();
+    console.log('api_token', this.token);
     const reqConfig = {
       method,
       url,
@@ -52,6 +55,8 @@ class CognitensorEndpoints {
     // TODO: Check if device is online
     axios(reqConfig)
       .then((result) => {
+        console.log('reqConfig', reqConfig);
+        console.log('result', result);
         if (result.status === 200) {
           dispatchReducer({
             type: 'API_FETCH_SUCCESS',
@@ -60,6 +65,7 @@ class CognitensorEndpoints {
         }
       })
       .catch((e) => {
+        console.log(e);
         dispatchReducer({ type: 'API_FETCH_FAILURE' });
         console.warn(e);
       });
@@ -113,6 +119,7 @@ class CognitensorEndpoints {
 
   //-------------------------------------------------dashboard_api-------------------------------------------------
   getDashboard = async ({ dispatchReducer }) => {
+    console.log('getDashboard');
     await this.apk({
       url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
       method: 'get',
@@ -122,6 +129,7 @@ class CognitensorEndpoints {
   //---------------------------------------------------------------------------------------------------------------
 
   getDashboardList = async ({ dispatchReducer }) => {
+    console.log('getDashboardList');
     await this.api({
       url: `${CLIENT_USER_URL}/cogniviz/dashboard/titles`,
       method: 'get',
@@ -131,5 +139,3 @@ class CognitensorEndpoints {
 }
 
 export default new CognitensorEndpoints();
-
-//https://console.cognitensor.com/api/userapi/cogniviz/get/dashboardconfig/rr

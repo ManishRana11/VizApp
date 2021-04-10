@@ -13,14 +13,14 @@ class CognitensorAsyncStorageService {
 
   getUserToken = async () => {
     let userToken;
-    console.log('sss');
+    console.log('token_fetching');
     try {
       userToken = await AsyncStorage.getItem(this.USER_TOKEN_KEY);
     } catch (e) {
       console.log(e);
       console.warn('StorageClient: Failed to get user token');
     }
-    console.log('yyy', userToken);
+    console.log('token_fetched', userToken);
     return userToken;
   };
 

@@ -20,7 +20,6 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
       style={{
         height: props.height,
         flexDirection: 'row',
-        display: !visibility && 'none',
       }}>
       <YAxis
         data={areaChartY}

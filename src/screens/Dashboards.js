@@ -21,6 +21,7 @@ const Dashboards = ({ navigation }) => {
   };
 
   useEffect(() => {
+    console.log('list');
     CognitensorEndpoints.getDashboardList({
       dispatchReducer: dispatchDashboards,
     });
