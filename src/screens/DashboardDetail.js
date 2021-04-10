@@ -31,16 +31,12 @@ const DashboardDetail = () => {
         <TopTab.Navigator
           tabBarOptions={{
             scrollEnabled: true,
-          }}
-          data={dashboardsData.data.message}>
+          }}>
           {data.tabsConfig.map((item) => {
             return (
               <TopTab.Screen
                 key={item.name}
                 name={item.name}
-                renderItem={({ item, index }) => (
-                  <TabDashboardDetail item={item} index={index} />
-                )}
                 component={TabDashboardDetail}
                 initialParams={{
                   tabsConfig: item,
