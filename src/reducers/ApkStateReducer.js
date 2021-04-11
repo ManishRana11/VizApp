@@ -11,7 +11,9 @@ export const apkStateReducer = (state, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        data: action.payload,
+        dashboardConfig: action.payload.dashboard_config,
+        dbConnectionString: action.payload.dbConnectionString,
+        dbType: action.payload.dbType,
       };
     case 'API_FETCH_DATA_FAILURE':
       return {

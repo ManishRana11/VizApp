@@ -7,8 +7,6 @@ class CognitensorEndpoints {
   //---------------------------------------------Dashboard_Data---------------------------------------------
   apk = ({ url, method, dispatchReducer }) => {
     dispatchReducer({ type: 'API_FETCH_DATA_INIT' });
-    console.log('apk_hit');
-    console.log('apk_token', this.token);
     const dashConfig = {
       method,
       url,
@@ -21,12 +19,11 @@ class CognitensorEndpoints {
     // TODO: Check if device is online
     axios(dashConfig)
       .then((dash) => {
-        console.log('dashconfig', dashConfig);
-        console.log('dash', dash);
         if (dash.status === 200) {
+          const dashdata = dash?.data?.message;
           dispatchReducer({
             type: 'API_FETCH_DATA_SUCCESS',
-            payload: dash.data,
+            payload: dashdata,
           });
         }
       })
@@ -40,9 +37,7 @@ class CognitensorEndpoints {
 
   api = async ({ url, method, dispatchReducer }) => {
     dispatchReducer({ type: 'API_FETCH_INIT' });
-    console.log('api_hit');
     this.token = await CognitensorAsyncStorageService.getUserToken();
-    console.log('api_token', this.token);
     const reqConfig = {
       method,
       url,
@@ -55,8 +50,6 @@ class CognitensorEndpoints {
     // TODO: Check if device is online
     axios(reqConfig)
       .then((result) => {
-        console.log('reqConfig', reqConfig);
-        console.log('result', result);
         if (result.status === 200) {
           dispatchReducer({
             type: 'API_FETCH_SUCCESS',

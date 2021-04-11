@@ -6,8 +6,11 @@ import * as shape from 'd3-shape';
 
 const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
   const xAxis = areaChartData.message.map((item) => item[Object.keys(item)[0]]);
-  const areaChartY = areaChartData.message.map(
+  const areaChartY1 = areaChartData.message.map(
     (item) => item[Object.keys(item)[1]],
+  );
+  const areaChartY2 = areaChartData.message.map(
+    (item) => item[Object.keys(item)[2]],
   );
   // const areaChartY2 = areaChartData.message.map(
   //   (item) => item[Object.keys(item)[2]],
@@ -22,7 +25,7 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
         flexDirection: 'row',
       }}>
       <YAxis
-        data={areaChartY}
+        data={areaChartY1}
         contentInset={{ marginBottom: 20 }}
         svg={{
           fill: 'grey',
@@ -32,14 +35,21 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
       <View style={{ flex: 1 }}>
         <AreaChart
           style={{ flex: 1 }}
-          data={areaChartY}
+          data={areaChartY1}
+          contentInset={{ top: 20, bottom: 20 }}
+          curve={shape.curveNatural}
+          svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+        />
+        <AreaChart
+          style={{ flex: 1 }}
+          data={areaChartY2}
           contentInset={{ top: 20, bottom: 20 }}
           curve={shape.curveNatural}
           svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
         />
         <XAxis
           style={{ height: 20 }}
-          data={areaChartY}
+          data={areaChartY1}
           formatLabel={(value, index) => xAxis[index]}
           contentInset={{ left: 30, right: 30 }}
           svg={{

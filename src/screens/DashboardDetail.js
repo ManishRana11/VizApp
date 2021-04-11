@@ -10,7 +10,7 @@ import { theme } from '../theme';
 
 const DashboardDetail = () => {
   const [dashboardsData, dispatchDashboardsData] = useReducer(apkStateReducer, {
-    data: [],
+    dashboardConfig: {},
     isLoading: true,
     isError: false,
   });
@@ -32,11 +32,12 @@ const DashboardDetail = () => {
           tabBarOptions={{
             scrollEnabled: true,
           }}>
-          {data.tabsConfig.map((item) => {
+          {dashboardsData.dashboardConfig.tabsConfig.map((item) => {
+            console.log(dashboardsData);
             return (
               <TopTab.Screen
-                key={item.name}
-                name={item.name}
+                key={JSON.stringify(item.name)}
+                name={JSON.stringify(item.name)}
                 component={TabDashboardDetail}
                 initialParams={{
                   tabsConfig: item,

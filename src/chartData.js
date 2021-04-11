@@ -1,12 +1,12 @@
 export const areaChartData = {
   message: [
     {
-      year: 2018,
+      year: '2018',
       quantity: 241.01956823922,
       sales: 74834.12976954,
     },
     {
-      year: 2019,
+      year: '2019',
       quantity: 288.57247706422,
       sales: 80022.3050176429,
     },
