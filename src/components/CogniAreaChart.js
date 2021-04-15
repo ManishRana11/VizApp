@@ -9,9 +9,9 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
   const areaChartY1 = areaChartData.message.map(
     (item) => item[Object.keys(item)[1]],
   );
-  const areaChartY2 = areaChartData.message.map(
-    (item) => item[Object.keys(item)[2]],
-  );
+  // const areaChartY2 = areaChartData.message.map(
+  //   (item) => item[Object.keys(item)[2]],
+  // );
   // const areaChartY2 = areaChartData.message.map(
   //   (item) => item[Object.keys(item)[2]],
   // );
@@ -36,13 +36,6 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
         <AreaChart
           style={{ flex: 1 }}
           data={areaChartY1}
-          contentInset={{ top: 20, bottom: 20 }}
-          curve={shape.curveNatural}
-          svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
-        />
-        <AreaChart
-          style={{ flex: 1 }}
-          data={areaChartY2}
           contentInset={{ top: 20, bottom: 20 }}
           curve={shape.curveNatural}
           svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}

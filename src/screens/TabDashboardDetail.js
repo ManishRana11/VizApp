@@ -6,9 +6,10 @@ import { mapNameToChart } from '../utils/commonFunctions';
 import { areaChartData } from '../chartData';
 
 const TabDashboardDetail = ({ navigation, route }) => {
+  const title = route.params.chartName;
   return (
     <DefaultScrollView>
-      <ChartView title="Area Chart">
+      <ChartView title={title}>
         <CogniAreaChart areaChartData={areaChartData} height={200} />
       </ChartView>
     </DefaultScrollView>
