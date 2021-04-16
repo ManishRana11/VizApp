@@ -16,7 +16,6 @@ const DashboardDetail = () => {
   });
 
   useEffect(() => {
-    console.log('dashboard_detail');
     CognitensorEndpoints.getDashboard({
       dispatchReducer: dispatchDashboardsData,
     });
@@ -34,13 +33,15 @@ const DashboardDetail = () => {
           }}>
           {dashboardsData.dashboardConfig.tabsConfig.map((item) => {
             console.log(dashboardsData);
+            console.log('bbbb', dashboardsData.dashboardConfig.tabsConfig);
+            console.log('aaaa', dashboardsData.dashboardConfig.tabsConfig.item);
             return (
               <TopTab.Screen
                 key={JSON.stringify(item.name)}
                 name={JSON.stringify(item.name)}
                 component={TabDashboardDetail}
                 initialParams={{
-                  chartName: item.name,
+                  tabsConfig: item,
                 }}
               />
             );

@@ -6,12 +6,17 @@ import { mapNameToChart } from '../utils/commonFunctions';
 import { areaChartData } from '../chartData';
 
 const TabDashboardDetail = ({ navigation, route }) => {
-  const title = route.params.chartName;
+  const tabsConfig = route.params.tabsConfig;
+  const ChartToDisplay = mapNameToChart();
   return (
     <DefaultScrollView>
-      <ChartView title={title}>
-        <CogniAreaChart areaChartData={areaChartData} height={200} />
-      </ChartView>
+      {tabsConfig.components.map((comp) => {
+        console.log(tabsConfig.components);
+        console.log(tabsConfig.components.comp);
+        <ChartView key={comp.name} title={comp.name}>
+          <ChartToDisplay areaChartData={areaChartData} height={200} />
+        </ChartView>;
+      })}
     </DefaultScrollView>
   );
 };

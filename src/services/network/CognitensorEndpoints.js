@@ -112,7 +112,6 @@ class CognitensorEndpoints {
 
   //-------------------------------------------------dashboard_api-------------------------------------------------
   getDashboard = async ({ dispatchReducer }) => {
-    console.log('getDashboard');
     await this.apk({
       url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
       method: 'get',
@@ -122,7 +121,6 @@ class CognitensorEndpoints {
   //---------------------------------------------------------------------------------------------------------------
 
   getDashboardList = async ({ dispatchReducer }) => {
-    console.log('getDashboardList');
     await this.api({
       url: `${CLIENT_USER_URL}/cogniviz/dashboard/titles`,
       method: 'get',
