@@ -33,8 +33,6 @@ const DashboardDetail = () => {
           }}>
           {dashboardsData.dashboardConfig.tabsConfig.map((item) => {
             console.log(dashboardsData);
-            console.log('bbbb', dashboardsData.dashboardConfig.tabsConfig);
-            console.log('aaaa', dashboardsData.dashboardConfig.tabsConfig.item);
             return (
               <TopTab.Screen
                 key={JSON.stringify(item.name)}

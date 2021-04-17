@@ -12,8 +12,7 @@ const TabDashboardDetail = ({ navigation, route }) => {
     <DefaultScrollView>
       {tabsConfig.components.map((comp) => {
         console.log(tabsConfig.components);
-        console.log(tabsConfig.components.comp);
-        <ChartView key={comp.name} title={comp.name}>
+        <ChartView title={comp.name}>
           <ChartToDisplay areaChartData={areaChartData} height={200} />
         </ChartView>;
       })}
