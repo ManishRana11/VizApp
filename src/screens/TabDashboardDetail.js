@@ -7,14 +7,20 @@ import { areaChartData } from '../chartData';
 
 const TabDashboardDetail = ({ navigation, route }) => {
   const tabsConfig = route.params.tabsConfig;
-  const ChartToDisplay = mapNameToChart();
+  const ChartToDispay = mapNameToChart();
   return (
     <DefaultScrollView>
       {tabsConfig.components.map((comp) => {
         console.log(tabsConfig.components);
-        <ChartView title={comp.name}>
-          <ChartToDisplay areaChartData={areaChartData} height={200} />
-        </ChartView>;
+        return (
+          <ChartView key={comp.name} title={comp.name}>
+            <CogniAreaChart
+              name={comp.name}
+              areaChartData={areaChartData}
+              height={200}
+            />
+          </ChartView>
+        );
       })}
     </DefaultScrollView>
   );

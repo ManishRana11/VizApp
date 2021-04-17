@@ -4,7 +4,6 @@ import TopTab from '../navigation/TopTabNavigation';
 import TabDashboardDetail from './TabDashboardDetail';
 import { apkStateReducer } from '../reducers/ApkStateReducer';
 import CognitensorEndpoints from '../services/network/CognitensorEndpoints';
-import data from '../dummy/dummyData';
 import DefaultView from '../components/default/DefaultView';
 import { theme } from '../theme';
 
