@@ -13,9 +13,11 @@ import {
   StackedBarChart,
   WaterfallChart,
   TreeMap,
+  LineChartGate,
   MixAndMatch,
   SimpleCard,
   BlogTable,
+  BlogCard,
   LiquidTable,
 } from 'react-native-svg-charts';
 
@@ -23,7 +25,9 @@ export const mapNameToChart = (name) => {
   const nameToChart = {
     AreaChart: AreaChart,
     BarGraph: BarChart,
+    BarChart: BarChart, //NEWLYADDED
     LineChart: LineChart,
+    LineChartGate: LineChartGate,
     PieChart: PieChart,
     SingleCircularProgress: SingleCircularProgress,
     Histogram: Histogram,
@@ -33,11 +37,13 @@ export const mapNameToChart = (name) => {
     SankeyChart: SankeyChart,
     ScatterPlot: ScatterPlot,
     StackedBarGraph: StackedBarChart,
+    StackedBarChartGate: StackedBarChart, //NEWLY ADDED
     WaterfallTable: WaterfallChart,
     TreeMap: TreeMap,
     MixAndMatch: MixAndMatch,
     SimpleCard: SimpleCard,
     BlogCard: BlogTable,
+    BlogTable: BlogCard, //NEWLY ADDED
     LiquidGauge: LiquidTable,
   };
 

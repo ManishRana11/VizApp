@@ -1,10 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { View } from 'react-native';
-import { AreaChart, YAxis, XAxis } from 'react-native-svg-charts';
+//import { YAxis, XAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
+import { YAxis, XAxis } from 'react-native-svg-charts';
 
-const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
+const GenericChart = ({ ChartType, areaChartData, visibility, ...props }) => {
+  console.log('ChartType ', ChartType);
+
   const xAxis = areaChartData.message.map((item) => item[Object.keys(item)[0]]);
   const areaChartY1 = areaChartData.message.map(
     (item) => item[Object.keys(item)[1]],
@@ -25,7 +28,7 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
         }}
       />
       <View style={{ flex: 1 }}>
-        <AreaChart
+        <ChartType
           style={{ flex: 1 }}
           data={areaChartY1}
           contentInset={{ top: 20, bottom: 20 }}
@@ -50,4 +53,4 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
   );
 };
 
-export default CogniAreaChart;
+export default GenericChart;
