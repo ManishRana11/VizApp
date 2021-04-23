@@ -1,14 +1,32 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { AreaChart, YAxis, XAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 
 const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
-  const xAxis = areaChartData.message.map((item) => item[Object.keys(item)[0]]);
-  const areaChartY1 = areaChartData.message.map(
-    (item) => item[Object.keys(item)[1]],
-  );
+  const [data, setData] = useState([]);
+  let label = ['2010', '2020', '2030', '2040', '2050'];
+  const xAxis = data.map((item) => item[0]);
+  const areaChartY1 = data.map((item) => item[1]);
+
+  const getArticlesFromApi = async () => {
+    let response = await fetch(
+      'https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=100&type=json',
+    );
+    let json = await response.json();
+
+    setData(json);
+  };
+
+  React.useEffect(() => {
+    getArticlesFromApi();
+  }, []);
+
+  // const xAxis = areaChartData.message.map((item) => item[Object.keys(item)[0]]);
+  // const areaChartY1 = areaChartData.message.map(
+  //   (item) => item[Object.keys(item)[1]],
+  // );
 
   return (
     <View
@@ -20,7 +38,7 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
         data={areaChartY1}
         contentInset={{ marginBottom: 20 }}
         svg={{
-          fill: 'grey',
+          fill: 'blue',
           fontSize: 12,
         }}
       />
@@ -33,14 +51,14 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
           svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
         />
         <XAxis
-          style={{ height: 20 }}
+          style={{ height: 30 }}
           data={areaChartY1}
           formatLabel={(value, index) => xAxis[index]}
           contentInset={{ left: 30, right: 30 }}
           svg={{
             fill: 'grey',
             fontSize: 12,
-            rotation: 45,
+            rotation: 35,
             originY: 5,
             y: 15,
           }}

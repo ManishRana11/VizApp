@@ -11,7 +11,7 @@ const TabDashboardDetail = ({ navigation, route }) => {
       {tabsConfig.components.map((comp, index) => {
         return (
           <ChartView key={index} title={comp.name}>
-            <CogniAreaChart areaChartData={areaChartData} height={200} />
+            <CogniAreaChart height={200} />
           </ChartView>
         );
       })}
