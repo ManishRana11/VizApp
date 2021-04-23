@@ -53,7 +53,7 @@ const CogniAreaChart = ({ visibility, ...props }) => {
         />
         <XAxis
           style={{ height: 30 }}
-          data={areaChartY1}
+          data={xAxis}
           formatLabel={(value, index) => xAxis[index]}
           contentInset={{ left: 30, right: 30 }}
           svg={{
