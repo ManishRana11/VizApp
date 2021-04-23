@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { AreaChart, YAxis, XAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 
-const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
+const CogniAreaChart = ({ visibility, ...props }) => {
   const [data, setData] = useState([]);
   let label = ['2010', '2020', '2030', '2040', '2050'];
   const xAxis = data.map((item) => item[0]);
@@ -14,8 +14,9 @@ const CogniAreaChart = ({ areaChartData, visibility, ...props }) => {
     let response = await fetch(
       'https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=100&type=json',
     );
+    console.log('a', response);
     let json = await response.json();
-
+    console.log('b', json);
     setData(json);
   };
 
