@@ -89,7 +89,6 @@ class CognitensorEndpoints {
           });
         }
         if (response.statusText === 'error') {
-          console.log(response);
         }
       })
       .catch((err) => {
@@ -113,7 +112,7 @@ class CognitensorEndpoints {
   //-------------------------------------------------dashboard_api-------------------------------------------------
   getDashboard = async ({ dispatchReducer }) => {
     await this.apk({
-      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
+      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/disaster_analysis_mumbai`,
       method: 'get',
       dispatchReducer,
     });
