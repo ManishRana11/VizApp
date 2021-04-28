@@ -65,40 +65,37 @@ class CognitensorEndpoints {
       });
   };
   //---------------------------------------Execute Query-----------------------------------------------
-  // handleQueryProcess = (flag) => {
-  //   const {
-  //     dbType, dbConnectionString, dbCaching, pypuffFile, development, token,
-  //   } = this.context;
-  //   const {
-  //     componentprops: { pypuff, newQuery }, changing, filtervaluer: filterValueR,
-  //     filtervaluenr: filterValueNR,
-  //   } = this.props;
-
-  //   // Options to send request for data
-  //   const options = {
+  // execute = async () => {
+  //   axios({
   //     method: 'post',
-  //     // Check if running query or python file
   //     url: `${CLIENT_USER_URL}/cogniviz/query/execute`,
-  //     data: {
-  //       query: newQuery,
-  //       dbType,
-  //       dbConnectionString,
-  //       dbCaching,
-  //       pypuffFile,
-  //       developmentFile: development,
-  //       gammaFile: false,
-  //       filterValue: filterValueR,
-  //       filterValueNR,
-  //       childObject: {},
-  //     },
   //     headers: {
+  //       Accept: 'application/json',
   //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${token || window.localStorage.authToken}`,
   //     },
-  //   };
-
-  //   // If requesting or mounting send request.
-  //   if (changing === 2 || flag === 1) this.sendRequest(options);
+  //     data: {
+  //       email: email.toLowerCase().trim(),
+  //       password: password,
+  //     },
+  //   })
+  //     .then(async (result) => {
+  //       console.log(result);
+  //       if (result.data.token) {
+  //         await CognitensorAsyncStorageService.setUserToken(
+  //           result.data.token,
+  //         );
+  //         dispatchReducer({
+  //           type: 'SIGN_IN',
+  //           token: response.data.token,
+  //           user: response.data.user,
+  //         });
+  //       }
+  //       if (response.statusText === 'error') {
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
   // };
   //---------------------------------------------------------------------------------------------------
   login = async (email, password, dispatchReducer) => {
@@ -115,6 +112,7 @@ class CognitensorEndpoints {
       }),
     })
       .then(async (response) => {
+        console.log(response);
         if (response.data.token) {
           await CognitensorAsyncStorageService.setUserToken(
             response.data.token,
@@ -149,7 +147,7 @@ class CognitensorEndpoints {
   //-------------------------------------------------dashboard_api-------------------------------------------------
   getDashboard = async ({ dispatchReducer }) => {
     await this.apk({
-      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/disaster_analysis_mumbai`,
+      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
       method: 'get',
       dispatchReducer,
     });
