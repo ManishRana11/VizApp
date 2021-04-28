@@ -32,6 +32,7 @@ const DashboardDetail = () => {
           }}>
           {dashboardsData.dashboardConfig.tabsConfig.map((item) => {
             console.log(dashboardsData);
+            console.log(dashboardsData.dashboardConfig.pypuffFile);
             return (
               <TopTab.Screen
                 key={JSON.stringify(item.name)}

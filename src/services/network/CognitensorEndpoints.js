@@ -50,6 +50,7 @@ class CognitensorEndpoints {
     // TODO: Check if device is online
     axios(reqConfig)
       .then((result) => {
+        console.log(result);
         if (result.status === 200) {
           dispatchReducer({
             type: 'API_FETCH_SUCCESS',
@@ -63,7 +64,43 @@ class CognitensorEndpoints {
         console.warn(e);
       });
   };
+  //---------------------------------------Execute Query-----------------------------------------------
+  // handleQueryProcess = (flag) => {
+  //   const {
+  //     dbType, dbConnectionString, dbCaching, pypuffFile, development, token,
+  //   } = this.context;
+  //   const {
+  //     componentprops: { pypuff, newQuery }, changing, filtervaluer: filterValueR,
+  //     filtervaluenr: filterValueNR,
+  //   } = this.props;
 
+  //   // Options to send request for data
+  //   const options = {
+  //     method: 'post',
+  //     // Check if running query or python file
+  //     url: `${CLIENT_USER_URL}/cogniviz/query/execute`,
+  //     data: {
+  //       query: newQuery,
+  //       dbType,
+  //       dbConnectionString,
+  //       dbCaching,
+  //       pypuffFile,
+  //       developmentFile: development,
+  //       gammaFile: false,
+  //       filterValue: filterValueR,
+  //       filterValueNR,
+  //       childObject: {},
+  //     },
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${token || window.localStorage.authToken}`,
+  //     },
+  //   };
+
+  //   // If requesting or mounting send request.
+  //   if (changing === 2 || flag === 1) this.sendRequest(options);
+  // };
+  //---------------------------------------------------------------------------------------------------
   login = async (email, password, dispatchReducer) => {
     axios({
       method: 'post',
