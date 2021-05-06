@@ -65,6 +65,9 @@ const Login = () => {
           />
         }
       />
+      <TouchableHighlight>
+        <Text style={styles.forgot}>Forgot Password ?</Text>
+      </TouchableHighlight>
       <TouchableHighlight
         style={styles.button}
         onPress={() => {
@@ -97,6 +100,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 8,
     marginVertical: theme.spacing.small,
+  },
+  forgot: {
+    //alignItems: 'right',
+    color: theme.colors.info,
   },
   buttonContainer: {
     flexDirection: 'row',

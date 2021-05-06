@@ -65,7 +65,7 @@ class CognitensorEndpoints {
       });
   };
   //---------------------------------------Execute Query-----------------------------------------------
-  // execute = async () => {
+  // execute = async ( dispatchReducer ) => {
   //   axios({
   //     method: 'post',
   //     url: `${CLIENT_USER_URL}/cogniviz/query/execute`,
@@ -73,28 +73,24 @@ class CognitensorEndpoints {
   //       Accept: 'application/json',
   //       'Content-Type': 'application/json',
   //     },
-  //     data: {
+  //     data: JSON.stringify({
   //       email: email.toLowerCase().trim(),
   //       password: password,
-  //     },
+  //     }),
   //   })
-  //     .then(async (result) => {
-  //       console.log(result);
-  //       if (result.data.token) {
-  //         await CognitensorAsyncStorageService.setUserToken(
-  //           result.data.token,
-  //         );
-  //         dispatchReducer({
-  //           type: 'SIGN_IN',
-  //           token: response.data.token,
-  //           user: response.data.user,
-  //         });
-  //       }
-  //       if (response.statusText === 'error') {
-  //       }
+  //     .then(async (database) => {
+  //       console.log(database);
+  //        if (database.status === 200) {
+  //          dispatchReducer({
+  //            type: 'API_FETCH_EXECUTE_SUCCESS',
+  //            payload: database.data,
+  //          });
+  //        }
   //     })
-  //     .catch((err) => {
-  //       console.log(err);
+  //     .catch((eror) => {
+  //       console.log(eror);
+  //       dispatchReducer({ type: 'API_FETCH_EXECUTE_FAILURE' });
+  //       console.warn(eror);
   //     });
   // };
   //---------------------------------------------------------------------------------------------------
@@ -147,7 +143,7 @@ class CognitensorEndpoints {
   //-------------------------------------------------dashboard_api-------------------------------------------------
   getDashboard = async ({ dispatchReducer }) => {
     await this.apk({
-      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/rr`,
+      url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/disaster_analysis_mumbai`,
       method: 'get',
       dispatchReducer,
     });
