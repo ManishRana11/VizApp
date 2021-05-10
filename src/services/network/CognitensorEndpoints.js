@@ -65,7 +65,7 @@ class CognitensorEndpoints {
       });
   };
   //---------------------------------------Execute Query-----------------------------------------------
-  // execute = async ( dispatchReducer ) => {
+  // execute = async (dbType, dispatchReducer) => {
   //   axios({
   //     method: 'post',
   //     url: `${CLIENT_USER_URL}/cogniviz/query/execute`,
@@ -74,18 +74,17 @@ class CognitensorEndpoints {
   //       'Content-Type': 'application/json',
   //     },
   //     data: JSON.stringify({
-  //       email: email.toLowerCase().trim(),
-  //       password: password,
+  //       dbType,
   //     }),
   //   })
   //     .then(async (database) => {
   //       console.log(database);
-  //        if (database.status === 200) {
-  //          dispatchReducer({
-  //            type: 'API_FETCH_EXECUTE_SUCCESS',
-  //            payload: database.data,
-  //          });
-  //        }
+  //       if (database.status === 200) {
+  //         dispatchReducer({
+  //           type: 'API_FETCH_EXECUTE_SUCCESS',
+  //           payload: database.data,
+  //         });
+  //       }
   //     })
   //     .catch((eror) => {
   //       console.log(eror);
@@ -141,7 +140,7 @@ class CognitensorEndpoints {
   };
 
   //-------------------------------------------------dashboard_api-------------------------------------------------
-  getDashboard = async ({ dispatchReducer }) => {
+  getDashboard = async ({ name, dispatchReducer }) => {
     await this.apk({
       url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/disaster_analysis_mumbai`,
       method: 'get',
