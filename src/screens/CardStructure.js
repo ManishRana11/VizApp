@@ -8,8 +8,8 @@ import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import { CSVLink } from 'react-csv';
 import Axios from 'axios';
 import { Responsive, WidthProvider } from 'react-grid-layout';
+import { API_URL, CLIENT_USER_URL, CLIENT_TEXT360_URL } from '../constants';
 
-import urls from '../../../urls';
 import helper from '../dashboard_helper';
 import { DashboardContext, ComponentModal, ErrorModal as EM } from '.';
 
@@ -75,7 +75,7 @@ class CardStructure extends Component {
       method: 'post',
       // Check if running query or python file
       url: `${
-        pypuff ? urls.CLIENT_TEXT360_URL : urls.CLIENT_USER_URL
+        pypuff ? CLIENT_USER_URL.CLIENT_TEXT360_URL : CLIENT_USER_URL.CLIENT_USER_URL
       }/cogniviz/query/execute`,
       data: {
         query: newQuery,
@@ -369,7 +369,7 @@ class CardStructure extends Component {
   triggerEmail = (tableData, emailFunction) => {
     const { token } = this.context;
     const options = {
-      url: `${urls.CLIENT_TEXT360_URL}/email/connector`,
+      url: `${CLIENT_USER_URL.CLIENT_TEXT360_URL}/email/connector`,
       method: 'post',
       data: {
         tableData,
