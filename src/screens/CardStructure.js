@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
@@ -8,12 +9,14 @@ import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import { CSVLink } from 'react-csv';
 import Axios from 'axios';
 import { Responsive, WidthProvider } from 'react-grid-layout';
+import { Text, View } from 'react-native';
 
-import urls from '../constants';
+import { CLIENT_USER_URL, CLIENT_TEXT360_URL } from '../constants';
 import helper from '../screens/dashboard_helper';
 import { DashboardContext } from '../screens/dashboardContext';
 import { ComponentModal } from '../screens/ComponentModal';
 import { ErrorModal as EM } from '../screens/ErrorModal';
+import CognitensorAsyncStorageService from '../services/asyncstorage/CognitensorAsyncStorageService';
 
 // React Grid Layout component with Responsive wrapper to create a responsive
 // grid.
@@ -63,7 +66,6 @@ class CardStructure extends Component {
       dbCaching,
       pypuffFile,
       development,
-      token,
     } = this.context;
     const {
       componentprops: { pypuff, newQuery },
@@ -72,13 +74,14 @@ class CardStructure extends Component {
       filtervaluenr: filterValueNR,
     } = this.props;
 
+    this.token = CognitensorAsyncStorageService.getUserToken();
+
     // Options to send request for data
     const options = {
       method: 'post',
       // Check if running query or python file
-      url: `${
-        pypuff ? urls.CLIENT_TEXT360_URL : urls.CLIENT_USER_URL
-      }/cogniviz/query/execute`,
+      // eslint-disable-next-line prettier/prettier
+      url: `${ pypuff ? CLIENT_TEXT360_URL : CLIENT_USER_URL }/cogniviz/query/execute`,
       data: {
         query: newQuery,
         dbType,
@@ -93,18 +96,22 @@ class CardStructure extends Component {
       },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token || window.localStorage.authToken}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
     // If requesting or mounting send request.
-    if (changing === 2 || flag === 1) this.sendRequest(options);
+    if (changing === 2 || flag === 1) {
+      this.sendRequest(options);
+    }
   };
 
   // Method to send request using options provided
   // options: Object containing request sending information.
   sendRequest = (options) => {
-    if (!this.isMountedNow) return;
+    if (!this.isMountedNow) {
+      return;
+    }
 
     const {
       componentprops: { pivot },
@@ -115,7 +122,9 @@ class CardStructure extends Component {
     // Send request
     Axios(options)
       .then((data) => {
-        if (!this.isMountedNow) return;
+        if (!this.isMountedNow) {
+          return;
+        }
 
         const finalData = pivot
           ? helper.pivotTable(data.data.message)
@@ -124,7 +133,9 @@ class CardStructure extends Component {
         this.setState({ renderData: finalData, error: false });
       })
       .catch((error) => {
-        if (!this.isMountedNow) return;
+        if (!this.isMountedNow) {
+          return;
+        }
 
         const message =
           error &&
@@ -251,7 +262,7 @@ class CardStructure extends Component {
         basic={basicModal || false}>
         <Modal.Header>{newCCTitle || ''}</Modal.Header>
         <Modal.Content>
-          <div className="modal-cogniviz">
+          <View className="modal-cogniviz">
             <RGL
               className="layout"
               cols={{
@@ -273,17 +284,17 @@ class CardStructure extends Component {
                 this.renderDashboardChild(d, native, index, cIndex),
               )}
             </RGL>
-          </div>
+          </View>
         </Modal.Content>
       </Modal>
     ) : null;
   };
 
-  // Method to render csv button in case data is available, sum in simple card
+  // Method to render csv Button in case data is available, sum in simple card
   // is not null and per in circular progress bar is not null
   // Processes renderData and converts to data for downloadable csv by
   // adding data, filter values for both required and non-required
-  // If no data then csv button is not shown
+  // If no data then csv Button is not shown
   renderCsvButton = () => {
     const { renderData } = this.state;
     const {
@@ -328,7 +339,7 @@ class CardStructure extends Component {
           !native ? (
           <>
             <Dropdown.Item>
-              {/* button to trigger extraction of data as csv and will only */}
+              {/* Button to trigger extraction of data as csv and will only */}
               {/* be seen when data is available */}
               {downloadable && csvData && csvData.length > 0 && (
                 <CSVLink
@@ -336,14 +347,14 @@ class CardStructure extends Component {
                   data={csvData}
                   rel="button"
                   className="csv-button">
-                  <span>
+                  <Text>
                     <Icon name="download" />
-                  </span>
-                  <span className="csv">Download CSV</span>
+                  </Text>
+                  <Text className="csv">Download CSV</Text>
                 </CSVLink>
               )}
             </Dropdown.Item>
-            {/* button to trigger email sending */}
+            {/* Button to trigger email sending */}
             {emailConnector && emailFunction && (
               <Dropdown.Item
                 icon="mail"
@@ -366,12 +377,12 @@ class CardStructure extends Component {
     this.isMountedNow && this.setState({ childObject, modalCinC: true });
 
   // Method to trigger email script
-  // called when send email button clicked
+  // called when send email Button clicked
   // Takes tableData as parameter
   triggerEmail = (tableData, emailFunction) => {
     const { token } = this.context;
     const options = {
-      url: `${urls.CLIENT_TEXT360_URL}/email/connector`,
+      url: `${CLIENT_TEXT360_URL}/email/connector`,
       method: 'post',
       data: {
         tableData,
@@ -379,7 +390,7 @@ class CardStructure extends Component {
       },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token || window.localStorage.authToken}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
@@ -394,11 +405,15 @@ class CardStructure extends Component {
 
   // Method to hide or show components on icon click
   dropClick = (e) => {
-    if (!this.isMountedNow) return;
+    if (!this.isMountedNow) {
+      return;
+    }
     const { handleClick } = this.props;
 
     const { hide } = this.state;
-    if (hide) handleClick(e);
+    if (hide) {
+      handleClick(e);
+    }
     this.setState({ hide: !hide });
   };
 
@@ -457,7 +472,9 @@ class CardStructure extends Component {
     } = this.props;
 
     // Check if development or cinc is open
-    if (development || modalCinC) return;
+    if (development || modalCinC) {
+      return;
+    }
 
     // Log the event.
     helper.saveComponentLog(
@@ -482,7 +499,9 @@ class CardStructure extends Component {
     } = this.props;
     const NewComponent = helper.renderComponent(name);
 
-    if (!modalFS) return null;
+    if (!modalFS) {
+      return null;
+    }
 
     return (
       <Modal
@@ -540,7 +559,9 @@ class CardStructure extends Component {
       styleTemp.WebkitTransform = 'translate(10px)';
       styleTemp.msTransform = 'translate(10px)';
       styleTemp.marginBottom = '1rem';
-      if (name === 'SimpleCard') styleTemp.height = 'auto';
+      if (name === 'SimpleCard') {
+        styleTemp.height = 'auto';
+      }
     }
 
     styleTemp.boxShadow = 'none';
@@ -567,7 +588,7 @@ class CardStructure extends Component {
     };
 
     return (
-      <Card {...cardOptions} as="div">
+      <Card {...cardOptions} as="View">
         {(development || name !== 'BlogCard') && (
           <Card.Content
             style={{ background: '#F3EFFE' || '#FFEFF5' }}
@@ -576,7 +597,7 @@ class CardStructure extends Component {
               className={cardColor ? 'card-header-new' : 'card-header-normal'}
               style={{ fontWeight: 500 }}>
               {title || 'No title'}
-              <div>
+              <View>
                 {tooltip &&
                   tooltip !== '' &&
                   (name === 'SimpleCard' || name === 'MultipleValueCard') && (
@@ -610,7 +631,7 @@ class CardStructure extends Component {
                     </Dropdown>
                   </>
                 )}
-              </div>
+              </View>
             </Card.Header>
           </Card.Content>
         )}

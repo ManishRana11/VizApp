@@ -1,4 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
+import { Text, View } from 'react-native';
 import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
@@ -6,9 +8,11 @@ import { CSVLink } from 'react-csv';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
 
-import { DashboardContext, ErrorModal as EM } from '.';
-import urls from '../../../urls';
-import helper from '../dashboard_helper';
+import { DashboardContext } from '../screens/dashboardContext';
+import { ErrorModal as EM } from '../screens/ErrorModal';
+import { CLIENT_USER_URL, CLIENT_TEXT360_URL } from '../constants';
+import helper from '../screens/dashboard_helper';
+import CognitensorAsyncStorageService from '../services/asyncstorage/CognitensorAsyncStorageService';
 
 // Class to render component in component for cogniviz
 // If it can be reworked please do as it is almost similar to CardStructure
@@ -37,7 +41,6 @@ class ComponentModal extends Component {
       dbCaching,
       pypuffFile,
       development,
-      token,
     } = this.context;
     // Obatain query and filter values from props
     const {
@@ -45,11 +48,14 @@ class ComponentModal extends Component {
       filtervaluenr: filterValueNR,
       filtervaluer: filterValue,
     } = this.props;
+
+    this.token = CognitensorAsyncStorageService.getUserToken();
+
     // Create request object
     const options = {
       method: 'post',
       url: `${
-        pypuff ? urls.CLIENT_TEXT360_URL : urls.CLIENT_USER_URL
+        pypuff ? CLIENT_TEXT360_URL : CLIENT_USER_URL
       }/cogniviz/query/execute`,
       data: {
         query,
@@ -65,7 +71,7 @@ class ComponentModal extends Component {
       },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token || window.localStorage.authToken}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
@@ -146,10 +152,10 @@ class ComponentModal extends Component {
                   data={csvData}
                   rel="button"
                   className="ui basic blue button csv-button">
-                  <span style={{ color: '#2195d0' }}>
+                  <Text style={{ color: '#2195d0' }}>
                     <Icon name="download" />
-                  </span>
-                  <span className="csv">Download CSV</span>
+                  </Text>
+                  <Text className="csv">Download CSV</Text>
                 </CSVLink>
               )}
             </Card.Description>
@@ -178,7 +184,9 @@ class ComponentModal extends Component {
       const timeNow = new Date();
 
       // Check if development
-      if (development) return;
+      if (development) {
+        return;
+      }
 
       // Check event duration
       if (timeNow - this.startHoverTime > 3000) {
@@ -211,7 +219,9 @@ class ComponentModal extends Component {
     } = this.props;
 
     // Check if development
-    if (development) return;
+    if (development) {
+      return;
+    }
 
     // Log the event.
     helper.saveComponentLog(
@@ -260,12 +270,12 @@ class ComponentModal extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onClick={this.handleUserClickLog}
-        as="div">
+        as="View">
         {title && (
           <Card.Content className="card-content-normal">
             <Card.Header className="card-header-normal">
               {title}
-              <div>
+              <View>
                 {tooltip && tooltip !== '' && (
                   <Popup
                     trigger={
@@ -277,7 +287,7 @@ class ComponentModal extends Component {
                     content={tooltip}
                   />
                 )}
-              </div>
+              </View>
               {development && error && <EM errors={error} />}
             </Card.Header>
           </Card.Content>

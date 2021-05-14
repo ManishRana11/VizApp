@@ -1,4 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -31,7 +33,7 @@ const ErrorModal = ({ errors }) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <span>
+    <Text>
       <IconButton
         color="secondary"
         onClick={handleClickOpen}
@@ -53,7 +55,7 @@ const ErrorModal = ({ errors }) => {
           <Pre>{errors}</Pre>
         </Logger>
       </Dialog>
-    </span>
+    </Text>
   );
 };
 
