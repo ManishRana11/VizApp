@@ -1,8 +1,9 @@
 import Axios from 'axios';
 
-import _ from '../../_helpers';
-import * as comps from './components';
-import urls from '../../urls';
+import _ from '../screens/_helpers';
+import * as comps from '../components/charts';
+import { CLIENT_USER_URL } from '../constants';
+import CognitensorAsyncStorageService from '../services/asyncstorage/CognitensorAsyncStorageService';
 
 const compareValues = (value1, value2, operator) => {
   if (operator === '>') {
@@ -16,7 +17,9 @@ const matchCriteria = (criteria, datapoint) => {
   let flag = true;
 
   criteria.forEach((d) => {
-    if (!flag) return;
+    if (!flag) {
+      return;
+    }
 
     const value = datapoint[d.columnName];
     if (!value) {
@@ -95,14 +98,17 @@ const methodCollection = {
   sum: (operation, data, filterValues) => {
     const { columnName, criteria, comparePreprocessing, filters } = operation;
 
-    if (!data || !columnName || !filterValues || !filters || !filters[0])
+    if (!data || !columnName || !filterValues || !filters || !filters[0]) {
       return 0;
+    }
 
     let sumValue = 0;
 
     data.forEach((d) => {
       const value = parseFloat(d[columnName]);
-      if (!value || !matchCriteria(criteria, d)) return;
+      if (!value || !matchCriteria(criteria, d)) {
+        return;
+      }
 
       const filterValue = methodCollection[comparePreprocessing](
         d[filters[0].columnName],
@@ -144,7 +150,9 @@ const methodCollection = {
       const groupValue = d[groupColumn];
       const value = parseFloat(d[columnName]);
 
-      if (!value || !groupValue || !matchCriteria(criteria, d)) return;
+      if (!value || !groupValue || !matchCriteria(criteria, d)) {
+        return;
+      }
 
       const filterValueOne = methodCollection[comparePreprocessing](
         d[filters[0].columnName],
@@ -207,13 +215,17 @@ const methodCollection = {
     data.forEach((d) => {
       const value = d.sales_amount;
       const { name } = d;
-      if (!value && value > 0) return;
+      if (!value && value > 0) {
+        return;
+      }
 
       const filterValueOne = methodCollection[comparePreprocessing](
         d[filters[0].columnName],
       );
 
-      if (filterValueOne !== filterValues[0]) return;
+      if (filterValueOne !== filterValues[0]) {
+        return;
+      }
 
       total += value;
       clientName = name;
@@ -262,7 +274,7 @@ const methodCollection = {
         // If it doesn't contain add new row. Assign it the root value.
         const newObject = { [root]: (d[root] || '').toString() };
         // Populate it with 0 for now and add values as we pares the dataset
-        // eslint-disable-next-line no-return-assign
+
         headers.forEach((key) => (newObject[key] = 0));
 
         // Add the value for current name value
@@ -296,10 +308,12 @@ const methodCollection = {
     cincId,
     token,
   ) => {
+    this.token = CognitensorAsyncStorageService.getUserToken();
+
     const options = {
       method: 'post',
       // Check if running query or python file
-      url: `${urls.CLIENT_USER_URL}/cogniviz/save/log`,
+      url: `${CLIENT_USER_URL}/cogniviz/save/log`,
       data: {
         dashboardName,
         componentId: index,
@@ -312,7 +326,7 @@ const methodCollection = {
       },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token || window.localStorage.authToken}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
@@ -336,7 +350,7 @@ const methodCollection = {
     const options = {
       method: 'post',
       // Check if running query or python file
-      url: `${urls.CLIENT_USER_URL}/cogniviz/save/log`,
+      url: `${CLIENT_USER_URL}/cogniviz/save/log`,
       data: {
         dashboardName,
         filterId: index,
@@ -349,7 +363,7 @@ const methodCollection = {
       },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token || window.localStorage.authToken}`,
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
