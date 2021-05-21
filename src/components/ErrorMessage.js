@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-// import Ghost from '../../assets/load.png';
+import Ghost from '../../assets/load.png';
 
 const ErrorMessage = ({ noDataMessage }) => (
   <View className="no-data-div">
