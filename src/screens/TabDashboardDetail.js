@@ -3,7 +3,6 @@ import DefaultScrollView from '../components/default/DefaultScrollView';
 import ChartView from '../components/default/ChartView';
 import CogniAreaChart from '../components/CogniAreaChart';
 import { areaChartData } from '../chartData';
-import CardStructure from '../screens/CardStructure';
 
 const TabDashboardDetail = ({ navigation, route }) => {
   const tabsConfig = route.params.tabsConfig;
