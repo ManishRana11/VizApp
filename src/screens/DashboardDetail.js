@@ -39,7 +39,7 @@ const DashboardDetail = () => {
                 name={JSON.stringify(item.name)}
                 component={TabDashboardDetail}
                 initialParams={{
-                  tabsConfig: item,
+                  items: item,
                 }}
               />
             );

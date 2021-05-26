@@ -10,6 +10,7 @@ import Settings from '../screens/account/Settings';
 import Notification from '../screens/Notification';
 import AppHeader from '../components/AppHeader';
 import DashboardDetail from '../screens/DashboardDetail';
+import CardStructure from '../screens/CardStructure';
 
 const Stack = createStackNavigator();
 
