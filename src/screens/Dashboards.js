@@ -26,6 +26,11 @@ const Dashboards = ({ navigation }) => {
     });
   }, []);
 
+  // const message = dashboards.data.message.map((item, index) => {
+  //   return item.dashboardName;
+  // });
+  // console.log('dN', message);
+
   return (
     <DefaultView>
       <DashboardHeader
@@ -50,6 +55,7 @@ const Dashboards = ({ navigation }) => {
                     onPress={() =>
                       navigation.navigate('Dashboard Detail', {
                         name: item.dashboardTitle || item.dashboardName,
+                        dashboardName: item.dashboardName,
                       })
                     }
                   />
@@ -61,6 +67,7 @@ const Dashboards = ({ navigation }) => {
                     onPress={() =>
                       navigation.navigate('Dashboard Detail', {
                         name: item.dashboardTitle || item.dashboardName,
+                        dashboardName: item.dashboardName,
                       })
                     }
                   />

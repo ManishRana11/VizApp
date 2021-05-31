@@ -1,6 +1,7 @@
 import axios from 'axios';
 import CognitensorAsyncStorageService from '../asyncstorage/CognitensorAsyncStorageService';
 import { CLIENT_USER_URL } from '../../constants';
+import { dashboardName } from '../../screens/Dashboards';
 
 class CognitensorEndpoints {
   token = '';
@@ -140,7 +141,7 @@ class CognitensorEndpoints {
   };
 
   //-------------------------------------------------dashboard_api-------------------------------------------------
-  getDashboard = async ({ name, dispatchReducer }) => {
+  getDashboard = async ({ dashboardName, dispatchReducer }) => {
     await this.apk({
       url: `${CLIENT_USER_URL}/cogniviz/get/dashboardconfig/disaster_analysis_mumbai`,
       method: 'get',
