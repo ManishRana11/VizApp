@@ -55,6 +55,7 @@ const CardStructure = () => {
   //---------------------------------------Execute Query-----------------------------------------------
   const execute = async (dispatchReducer) => {
     const token = await CognitensorAsyncStorageService.getUserToken();
+    console.log(token);
     axios({
       method: 'post',
       url: `${
