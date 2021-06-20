@@ -55,12 +55,11 @@ const CardStructure = () => {
   //---------------------------------------Execute Query-----------------------------------------------
   const execute = async (dispatchReducer) => {
     const token = await CognitensorAsyncStorageService.getUserToken();
-    console.log(token);
+    console.log('execute token', token);
     axios({
       method: 'post',
-      url: `${
-        pypuffFile ? CLIENT_TEXT360_URL : CLIENT_USER_URL
-      }/cogniviz/query/execute`,
+      // eslint-disable-next-line prettier/prettier
+      url: `${ pypuffFile ? CLIENT_TEXT360_URL : CLIENT_USER_URL }/cogniviz/query/execute`,
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${token}`,

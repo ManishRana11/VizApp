@@ -6,6 +6,8 @@ import {
   Text,
   Keyboard,
   View,
+  Linking,
+  Alert,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import DefaultScrollView from '../components/default/DefaultScrollView';
@@ -66,7 +68,13 @@ const Login = () => {
         }
       />
       <TouchableHighlight>
-        <Text style={styles.forgot}>Forgot Password ?</Text>
+        <Text
+          style={styles.forgot}
+          onPress={() =>
+            Linking.openURL('https://console.cognitensor.com/forgot')
+          }>
+          Forgot Password ?
+        </Text>
       </TouchableHighlight>
       <TouchableHighlight
         style={styles.button}
@@ -102,7 +110,6 @@ const styles = StyleSheet.create({
     marginVertical: theme.spacing.small,
   },
   forgot: {
-    //alignItems: 'right',
     color: theme.colors.info,
   },
   buttonContainer: {
